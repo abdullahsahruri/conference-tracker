@@ -1,0 +1,27 @@
+# Conference List to Track
+# Add conference acronyms (one per line)
+# Format: CONFERENCE_NAME
+# The system will automatically search for "CONFERENCE_NAME 2026", "CONFERENCE_NAME 2027", etc.
+
+# Computer Architecture
+ISCA
+MICRO
+HPCA
+
+# VLSI & Circuits
+ISSCC
+VLSI
+ICCAD
+DAC
+DATE
+ASPDAC
+ISLPED
+GLSVLSI
+
+# Design Automation
+ISCAS
+ICCD
+ICCAD
+ISPD
+
+# Add more conferences below (one per line)
