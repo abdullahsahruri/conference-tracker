@@ -107,6 +107,9 @@ jobs:
     needs: track-conferences
     if: success()
 
+    permissions:
+      contents: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -119,4 +122,3 @@ jobs:
           publish_branch: gh-pages
           keep_files: false
           enable_jekyll: false
-          include_files: conference_table.html
