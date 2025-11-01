@@ -58,7 +58,14 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
+
+          # Ensure log file exists (create if it doesn't)
+          touch deadline_changes.log
+
+          # Add all relevant files
           git add conference_database.json conference_table.html deadline_changes.log
+
+          # Commit if there are changes
           git diff --quiet && git diff --staged --quiet || git commit -m "Update conference deadlines - $(date +'%Y-%m-%d')"
 
       # Step 9: Push changes back to tracker repository
