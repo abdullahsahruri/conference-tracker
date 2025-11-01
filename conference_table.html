@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Conference Deadlines Tracker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #ddd;
+        }
+        a {
+            color: #1a73e8;
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        .deadline-past {
+            color: #999;
+        }
+        .deadline-soon {
+            background-color: #fff3cd;
+            font-weight: bold;
+        }
+        .last-updated {
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Conference Deadlines Tracker</h1>
+    <p>Automatically updated daily at 9:00 AM UTC</p>
+
+    <table>
+        <tr>
+            <th>Conference</th>
+            <th>Home Page</th>
+            <th>Paper Deadline</th>
+            <th>Conference Date</th>
+            <th>Last Checked</th>
+        </tr>
+        <tr>
+            <td>GLSVLSI 2025</td>
+            <td><a href="https://glsvlsi.org/" target="_blank">https://glsvlsi.org/...</a></td>
+            <td>March 17, 2025</td>
+            <td>None</td>
+            <td>2025-10-31</td>
+        </tr>
+        <tr>
+            <td>GLSVLSI 2026</td>
+            <td><a href="http://glsvlsi.org/" target="_blank">http://glsvlsi.org/...</a></td>
+            <td>March 17, 2025</td>
+            <td>None</td>
+            <td>2025-10-31</td>
+        </tr>
+        <tr>
+            <td>ISCA 2026</td>
+            <td><a href="https://www.iscaconf.org/isca2026/index.php" target="_blank">https://www.iscaconf.org/isca2026/index.php...</a></td>
+            <td>November 10, 2025</td>
+            <td>None</td>
+            <td>2025-10-31</td>
+        </tr>
+    </table>
+
+    <p class="last-updated">Last updated: 2025-10-31 13:35:15 UTC</p>
+    <p class="last-updated">Total conferences tracked: 3</p>
+</body>
+</html>

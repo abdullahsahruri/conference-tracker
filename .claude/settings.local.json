@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(mkdir:*)",
+      "Bash(python3:*)",
+      "Read(//home/asahruri/abdullahsahruri.github.io/**)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "ISCA_2026": {
+    "name": "ISCA 2026",
+    "url": "https://www.iscaconf.org/isca2026/index.php",
+    "paper_deadline": "November 10, 2025",
+    "conference_date": null,
+    "last_checked": "2025-10-31T13:35:06.342465",
+    "full_name": "ISCA 2026: Home"
+  },
+  "GLSVLSI_2025": {
+    "name": "GLSVLSI 2025",
+    "url": "https://glsvlsi.org/",
+    "paper_deadline": "March 17, 2025",
+    "conference_date": null,
+    "last_checked": "2025-10-31T13:35:14.541107",
+    "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
+  },
+  "GLSVLSI_2026": {
+    "name": "GLSVLSI 2026",
+    "url": "http://glsvlsi.org/",
+    "paper_deadline": "March 17, 2025",
+    "conference_date": null,
+    "last_checked": "2025-10-31T13:35:15.926612",
+    "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
+  }
+}

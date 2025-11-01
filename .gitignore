@@ -1,0 +1,44 @@
+# ===================================
+# CRITICAL: Google Calendar Credentials
+# NEVER commit these files!
+# ===================================
+credentials.json
+token.json
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+Thumbs.db
+
+# Logs
+*.log
+
+# Test files
+conferences_test.txt
+
+# Temporary files
+*.tmp
+*.bak
