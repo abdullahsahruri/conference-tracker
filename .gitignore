@@ -35,6 +35,7 @@ Thumbs.db
 
 # Logs
 *.log
+!deadline_changes.log
 
 # Test files
 conferences_test.txt
