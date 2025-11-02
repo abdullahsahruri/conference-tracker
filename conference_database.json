@@ -1,27 +1,21 @@
 {
   "ISCA_2026": {
-    "paper_deadline": "November 17, 2025",
-    "submission_type": "Regular Paper",
-    "conference_date": "June 27\u2013 July 1, 2026",
-    "abstract_deadline": "November 10, 2025",
-    "location": "Raleigh, USA",
     "name": "ISCA 2026",
     "url": "https://www.iscaconf.org/isca2026/index.php",
-    "last_checked": "2025-11-02T15:27:39.702308",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
+    "paper_deadline": "November 10, 2025",
+    "submission_type": "Abstract",
+    "conference_date": null,
+    "last_checked": "2025-11-02T15:37:12.344537",
+    "full_name": "ISCA 2026: Home"
   },
   "MICRO_2025": {
-    "paper_deadline": "April 11, 2025 at 11:59 PM EDT",
-    "submission_type": "Full Paper",
-    "conference_date": "October 18 \u2013 October 22, 2025",
-    "abstract_deadline": null,
-    "location": "Seoul, Korea",
     "name": "MICRO 2025",
     "url": "https://microarch.org/micro58/",
-    "last_checked": "2025-11-02T15:27:45.522842",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
+    "paper_deadline": "April 11, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": null,
+    "last_checked": "2025-11-02T15:37:14.123415",
+    "full_name": "MICRO 2025: Home"
   },
   "HPCA_2026": {
     "paper_deadline": "Fri 7 Nov 2025",
@@ -36,52 +30,40 @@
     "ai_model": "llama3.1:latest"
   },
   "ICCAD_2026": {
-    "paper_deadline": "January 31, 2026",
-    "submission_type": "Regular Paper",
-    "conference_date": "July 7-9, 2026",
-    "abstract_deadline": null,
-    "location": "Lisbon, Portugal",
     "name": "ICCAD 2026",
     "url": "https://www.iccad-conf.com/",
-    "last_checked": "2025-11-02T15:28:22.899294",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
+    "paper_deadline": "January 31, 2026",
+    "submission_type": "Regular Paper",
+    "conference_date": null,
+    "last_checked": "2025-11-02T15:37:29.483396",
+    "full_name": "ICCAD 2026 \u2013 10th International Conference on Control, Automation and Diagnosis"
   },
   "ISLPED_2025": {
-    "paper_deadline": "March 20, 2025",
-    "submission_type": "Regular Paper",
-    "conference_date": "August 6 - 8, 2025",
-    "abstract_deadline": "March 10, 2025",
-    "location": "Reykjavik, Iceland",
     "name": "ISLPED 2025",
     "url": "https://www.islped.org/2025/",
-    "last_checked": "2025-11-02T15:28:54.383559",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
+    "paper_deadline": "March 20, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": null,
+    "last_checked": "2025-11-02T15:37:45.107169",
+    "full_name": "ISLPED\u00a02025 IEEE/ACM International Symposium on Low Power Electronics and Design"
   },
   "GLSVLSI_2025": {
-    "paper_deadline": "March 17, 2025",
-    "submission_type": "Regular Paper",
-    "conference_date": "June 30 - July 2, 2025",
-    "abstract_deadline": null,
-    "location": "New Orleans, LA, USA",
     "name": "GLSVLSI 2025",
     "url": "https://glsvlsi.org/",
-    "last_checked": "2025-11-02T15:29:01.194076",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
-  },
-  "GLSVLSI_2026": {
     "paper_deadline": "March 17, 2025",
     "submission_type": "Regular Paper",
-    "conference_date": "June 30 - July 2, 2025",
-    "abstract_deadline": null,
-    "location": "New Orleans, LA, USA",
+    "conference_date": null,
+    "last_checked": "2025-11-02T15:37:47.735367",
+    "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
+  },
+  "GLSVLSI_2026": {
     "name": "GLSVLSI 2026",
     "url": "https://glsvlsi.org/",
-    "last_checked": "2025-11-02T15:29:05.231909",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
+    "paper_deadline": "March 17, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": null,
+    "last_checked": "2025-11-02T15:37:49.313319",
+    "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
   },
   "CICC_2025": {
     "paper_deadline": "November 17, 2025",
@@ -256,5 +238,14 @@
     "last_checked": "2025-11-02T15:31:11.732571",
     "extracted_with_ai": true,
     "ai_model": "llama3.1:latest"
+  },
+  "MICRO_2026": {
+    "name": "MICRO 2026",
+    "url": "https://microarch.org/",
+    "paper_deadline": "October 31, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": null,
+    "last_checked": "2025-11-02T15:37:15.695141",
+    "full_name": "MICRO: Home"
   }
 }
