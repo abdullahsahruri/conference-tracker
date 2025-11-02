@@ -7,6 +7,7 @@
 ISCA
 MICRO
 HPCA
+ASPLOS
 
 # VLSI & Circuits
 ISSCC
@@ -17,11 +18,31 @@ DATE
 ASPDAC
 ISLPED
 GLSVLSI
+CICC
+ESSCIRC
 
 # Design Automation
 ISCAS
 ICCD
-ICCAD
 ISPD
 
-# Add more conferences below (one per line)
+# FPGA & Reconfigurable Computing
+FPGA
+FCCM
+
+# Testing & Verification
+ITC
+VTS
+ATS
+
+# Systems & Architecture
+SOSP
+OSDI
+EUROSYS
+
+# Hardware Security
+HOST
+CHES
+
+# Emerging Technologies
+HOTCHIPS
