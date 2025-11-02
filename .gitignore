@@ -43,3 +43,9 @@ conferences_test.txt
 # Temporary files
 *.tmp
 *.bak
+
+# Images/screenshots
+*.png
+*.jpg
+*.jpeg
+*.gif
