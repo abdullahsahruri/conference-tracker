@@ -4,7 +4,7 @@
     "url": "https://www.iscaconf.org/isca2026/index.php",
     "paper_deadline": "November 10, 2025",
     "conference_date": null,
-    "last_checked": "2025-11-01T18:47:13.978049",
+    "last_checked": "2025-11-01T21:27:03.361512",
     "full_name": "ISCA 2026: Home"
   },
   "GLSVLSI_2025": {
@@ -12,7 +12,7 @@
     "url": "https://glsvlsi.org/",
     "paper_deadline": "March 17, 2025",
     "conference_date": null,
-    "last_checked": "2025-11-01T18:47:51.628360",
+    "last_checked": "2025-11-01T21:27:51.169143",
     "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
   },
   "GLSVLSI_2026": {
@@ -20,7 +20,7 @@
     "url": "https://glsvlsi.org/",
     "paper_deadline": "March 17, 2025",
     "conference_date": null,
-    "last_checked": "2025-11-01T18:47:52.925309",
+    "last_checked": "2025-11-01T21:27:52.618268",
     "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
   },
   "MICRO_2025": {
@@ -28,7 +28,7 @@
     "url": "https://microarch.org/micro58/",
     "paper_deadline": "April 11, 2025",
     "conference_date": null,
-    "last_checked": "2025-11-01T18:47:15.812485",
+    "last_checked": "2025-11-01T21:27:04.977099",
     "full_name": "MICRO 2025: Home"
   },
   "MICRO_2026": {
@@ -36,7 +36,7 @@
     "url": "https://microarch.org/",
     "paper_deadline": "October 31, 2025",
     "conference_date": null,
-    "last_checked": "2025-11-01T18:47:18.263099",
+    "last_checked": "2025-11-01T21:27:06.692962",
     "full_name": "MICRO: Home"
   },
   "VLSI_2025": {
@@ -52,7 +52,7 @@
     "url": "https://www.iccad-conf.com/",
     "paper_deadline": "January 31, 2026",
     "conference_date": null,
-    "last_checked": "2025-11-01T18:48:03.530553",
+    "last_checked": "2025-11-01T21:27:30.389882",
     "full_name": "ICCAD 2026 \u2013 10th International Conference on Control, Automation and Diagnosis"
   },
   "ISLPED_2025": {
@@ -60,7 +60,7 @@
     "url": "https://www.islped.org/2025/",
     "paper_deadline": "March 20, 2025",
     "conference_date": null,
-    "last_checked": "2025-11-01T18:47:48.332575",
+    "last_checked": "2025-11-01T21:27:48.031871",
     "full_name": "ISLPED\u00a02025 IEEE/ACM International Symposium on Low Power Electronics and Design"
   },
   "ISLPED_2026": {
@@ -68,7 +68,87 @@
     "url": "https://www.islped.org/2025/",
     "paper_deadline": "March 20, 2025",
     "conference_date": null,
-    "last_checked": "2025-11-01T18:47:50.138112",
+    "last_checked": "2025-11-01T21:27:49.599102",
     "full_name": "ISLPED\u00a02025 IEEE/ACM International Symposium on Low Power Electronics and Design"
+  },
+  "FPGA_2025": {
+    "name": "FPGA 2025",
+    "url": "https://www.isfpga.org/",
+    "paper_deadline": "September 24, 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:24.442623",
+    "full_name": "International Symposium on Field-Programmable Gate Arrays"
+  },
+  "FPGA_2026": {
+    "name": "FPGA 2026",
+    "url": "https://www.isfpga.org/",
+    "paper_deadline": "September 24, 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:25.812672",
+    "full_name": "International Symposium on Field-Programmable Gate Arrays"
+  },
+  "FCCM_2025": {
+    "name": "FCCM 2025",
+    "url": "https://www.fccm.org/",
+    "paper_deadline": "January 10, 2026",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:27.201801",
+    "full_name": "The 34th IEEE International Symposium on Field-Programmable Custom Computing Machines"
+  },
+  "FCCM_2026": {
+    "name": "FCCM 2026",
+    "url": "https://www.fccm.org/",
+    "paper_deadline": "January 10, 2026",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:28.514672",
+    "full_name": "The 34th IEEE International Symposium on Field-Programmable Custom Computing Machines"
+  },
+  "VTS_2026": {
+    "name": "VTS 2026",
+    "url": "https://tttc-vts.org/public_html/new/2026/call-for-papers/",
+    "paper_deadline": "January 31, 2026",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:35.585628",
+    "full_name": "Author Information | 44th IEEE VLSI Test Symposium 2026"
+  },
+  "SOSP_2025": {
+    "name": "SOSP 2025",
+    "url": "https://sigops.org/s/conferences/sosp/2025/index.html",
+    "paper_deadline": "April 10, 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:42.040413",
+    "full_name": "SOSP 2025: The 31st Symposium on Operating Systems Principles"
+  },
+  "EUROSYS_2025": {
+    "name": "EUROSYS 2025",
+    "url": "https://2025.eurosys.org/index.html",
+    "paper_deadline": "September 23, 2024",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:48.175866",
+    "full_name": "EuroSys 2025"
+  },
+  "EUROSYS_2026": {
+    "name": "EUROSYS 2026",
+    "url": "https://2026.eurosys.org/",
+    "paper_deadline": "September 26, 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:49.260656",
+    "full_name": "EuroSys 2026"
+  },
+  "CHES_2025": {
+    "name": "CHES 2025",
+    "url": "https://ches.iacr.org/2025/",
+    "paper_deadline": "15 July 2024",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:53.363750",
+    "full_name": "CHES 2025"
+  },
+  "CHES_2026": {
+    "name": "CHES 2026",
+    "url": "https://ches.iacr.org/2026/",
+    "paper_deadline": "15 July 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T21:28:54.757050",
+    "full_name": "CHES 2026"
   }
 }
