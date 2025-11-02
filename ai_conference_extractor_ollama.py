@@ -19,6 +19,14 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from typing import Optional, Dict
 
+# Import deadline validator
+try:
+    from deadline_validator import validate_extracted_info, check_deadline_context
+except ImportError:
+    # Validator not available, continue without validation
+    validate_extracted_info = None
+    check_deadline_context = None
+
 # Ollama API endpoint (runs locally)
 OLLAMA_API = "http://localhost:11434/api/generate"
 
@@ -106,7 +114,11 @@ Extract the following information and respond with ONLY valid JSON (no other tex
     "location": "city/country or null"
 }}
 
-Look for keywords: deadline, submission, important dates, call for papers.
+IMPORTANT:
+- Extract the PAPER SUBMISSION deadline, NOT notification/acceptance/camera-ready dates
+- Look for keywords: "paper deadline", "submission deadline", "abstract deadline", "call for papers"
+- IGNORE keywords: "notification", "acceptance", "camera ready", "final version", "author notification"
+- If multiple deadlines exist, choose the EARLIEST submission-related deadline
 Return ONLY the JSON object."""
 
     try:
@@ -153,6 +165,18 @@ Return ONLY the JSON object."""
         info['last_checked'] = datetime.now().isoformat()
         info['extracted_with_ai'] = True
         info['ai_model'] = model
+
+        # Validate deadline is not notification/camera-ready date
+        if validate_extracted_info:
+            is_valid, reason, corrected = validate_extracted_info(info)
+            if not is_valid:
+                print(f"  ⚠️  Validation failed: {reason}")
+                if corrected:
+                    print(f"  🔧 Using corrected info")
+                    info = corrected
+                else:
+                    print(f"  ❌ Cannot auto-correct, skipping")
+                    return None
 
         # Validate we got at least a deadline
         if info.get('paper_deadline') and info['paper_deadline'] != 'TBD':

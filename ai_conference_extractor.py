@@ -15,6 +15,14 @@ from bs4 import BeautifulSoup
 from datetime import datetime
 from typing import Optional, Dict
 
+# Import deadline validator
+try:
+    from deadline_validator import validate_extracted_info, check_deadline_context
+except ImportError:
+    # Validator not available, continue without validation
+    validate_extracted_info = None
+    check_deadline_context = None
+
 # Initialize Anthropic client
 def get_anthropic_client():
     """Get Anthropic API client. Requires ANTHROPIC_API_KEY environment variable."""
@@ -103,8 +111,12 @@ Please extract the following information and respond ONLY with valid JSON:
 }}
 
 Important:
-- Look for keywords like "deadline", "submission", "important dates", "call for papers"
+- paper_deadline should be the PAPER SUBMISSION deadline, NOT notification/acceptance/camera-ready dates
+- Look for keywords like "paper deadline", "submission deadline", "abstract deadline", "call for papers"
+- IGNORE dates near keywords: "notification", "acceptance", "camera ready", "final version"
 - Distinguish between abstract deadlines and full paper deadlines
+- If multiple deadlines exist, paper_deadline should be the EARLIEST submission-related deadline
+- notification_date and camera_ready are separate fields - do not confuse them with paper_deadline
 - Identify submission type from context (late breaking, poster, workshop, etc.)
 - Return ONLY the JSON object, no additional text"""
 
@@ -135,6 +147,18 @@ Important:
         info['url'] = url
         info['last_checked'] = datetime.now().isoformat()
         info['extracted_with_ai'] = True
+
+        # Validate deadline is not notification/camera-ready date
+        if validate_extracted_info:
+            is_valid, reason, corrected = validate_extracted_info(info)
+            if not is_valid:
+                print(f"  ⚠️  Validation failed: {reason}")
+                if corrected:
+                    print(f"  🔧 Using corrected info")
+                    info = corrected
+                else:
+                    print(f"  ❌ Cannot auto-correct, skipping")
+                    return None
 
         # Validate we got at least a deadline
         if info.get('paper_deadline') and info['paper_deadline'] != 'TBD':
