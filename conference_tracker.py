@@ -440,7 +440,15 @@ def generate_html_table(database: Dict):
         conferences.append((key, data))
 
     # Sort by paper deadline (if parseable)
-    conferences.sort(key=lambda x: x[1].get('paper_deadline', 'ZZZ'))
+    # Handle both string and dict deadlines (some conferences have multiple deadlines)
+    def get_sort_key(conf):
+        deadline = conf[1].get('paper_deadline', 'ZZZ')
+        if isinstance(deadline, dict):
+            # For conferences with multiple deadlines, use the first one
+            return str(next(iter(deadline.values()))) if deadline else 'ZZZ'
+        return str(deadline) if deadline else 'ZZZ'
+
+    conferences.sort(key=get_sort_key)
 
     for conf_key, data in conferences:
         name = data.get('name', conf_key)

@@ -1,173 +1,260 @@
 {
   "ISCA_2026": {
+    "paper_deadline": "November 17, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "June 27\u2013 July 1, 2026",
+    "abstract_deadline": "November 10, 2025",
+    "location": "Raleigh, USA",
     "name": "ISCA 2026",
     "url": "https://www.iscaconf.org/isca2026/index.php",
-    "paper_deadline": "November 10, 2025",
-    "submission_type": "Abstract",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:59:55.527987",
-    "full_name": "ISCA 2026: Home"
-  },
-  "GLSVLSI_2025": {
-    "name": "GLSVLSI 2025",
-    "url": "https://glsvlsi.org/",
-    "paper_deadline": "March 17, 2025",
-    "submission_type": "Regular Paper",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:00:38.215113",
-    "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
-  },
-  "GLSVLSI_2026": {
-    "name": "GLSVLSI 2026",
-    "url": "https://glsvlsi.org/",
-    "paper_deadline": "March 17, 2025",
-    "submission_type": "Regular Paper",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:00:39.743772",
-    "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
+    "last_checked": "2025-11-02T15:27:39.702308",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "MICRO_2025": {
+    "paper_deadline": "April 11, 2025 at 11:59 PM EDT",
+    "submission_type": "Full Paper",
+    "conference_date": "October 18 \u2013 October 22, 2025",
+    "abstract_deadline": null,
+    "location": "Seoul, Korea",
     "name": "MICRO 2025",
     "url": "https://microarch.org/micro58/",
-    "paper_deadline": "April 11, 2025",
-    "submission_type": "Regular Paper",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:59:57.130063",
-    "full_name": "MICRO 2025: Home"
+    "last_checked": "2025-11-02T15:27:45.522842",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
-  "MICRO_2026": {
-    "name": "MICRO 2026",
-    "url": "https://microarch.org/",
-    "paper_deadline": "October 31, 2025",
+  "HPCA_2026": {
+    "paper_deadline": "Fri 7 Nov 2025",
     "submission_type": "Regular Paper",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:59:58.486045",
-    "full_name": "MICRO: Home"
-  },
-  "VLSI_2025": {
-    "name": "VLSI 2025",
-    "url": "https://ieee-cas.org/event/conference/2025-ifipieee-33rd-international-conference-very-large-scale-integration-vlsi-soc",
-    "paper_deadline": "14 Jun 2025",
-    "conference_date": null,
-    "last_checked": "2025-11-01T18:47:24.550207",
-    "full_name": "2025 IFIP/IEEE 33rd International Conference on Very Large Scale Integration (VLSI-SoC) | IEEE CASS",
-    "submission_type": "Regular Paper"
+    "conference_date": "Sat 31 January - Wed 4 February 2026",
+    "abstract_deadline": null,
+    "location": "Sydney, Australia",
+    "name": "HPCA 2026",
+    "url": "https://conf.researchr.org/home/hpca-2026",
+    "last_checked": "2025-11-02T15:27:53.793520",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "ICCAD_2026": {
+    "paper_deadline": "January 31, 2026",
+    "submission_type": "Regular Paper",
+    "conference_date": "July 7-9, 2026",
+    "abstract_deadline": null,
+    "location": "Lisbon, Portugal",
     "name": "ICCAD 2026",
     "url": "https://www.iccad-conf.com/",
-    "paper_deadline": "January 31, 2026",
-    "submission_type": "Regular Paper",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:00:13.654695",
-    "full_name": "ICCAD 2026 \u2013 10th International Conference on Control, Automation and Diagnosis"
+    "last_checked": "2025-11-02T15:28:22.899294",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "ISLPED_2025": {
+    "paper_deadline": "March 20, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "August 6 - 8, 2025",
+    "abstract_deadline": "March 10, 2025",
+    "location": "Reykjavik, Iceland",
     "name": "ISLPED 2025",
     "url": "https://www.islped.org/2025/",
-    "paper_deadline": "March 20, 2025",
+    "last_checked": "2025-11-02T15:28:54.383559",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
+  },
+  "GLSVLSI_2025": {
+    "paper_deadline": "March 17, 2025",
     "submission_type": "Regular Paper",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:00:35.344981",
-    "full_name": "ISLPED\u00a02025 IEEE/ACM International Symposium on Low Power Electronics and Design"
+    "conference_date": "June 30 - July 2, 2025",
+    "abstract_deadline": null,
+    "location": "New Orleans, LA, USA",
+    "name": "GLSVLSI 2025",
+    "url": "https://glsvlsi.org/",
+    "last_checked": "2025-11-02T15:29:01.194076",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
-  "ISLPED_2026": {
-    "name": "ISLPED 2026",
-    "url": "https://www.islped.org/2025/",
-    "paper_deadline": "March 20, 2025",
+  "GLSVLSI_2026": {
+    "paper_deadline": "March 17, 2025",
     "submission_type": "Regular Paper",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:00:36.839443",
-    "full_name": "ISLPED\u00a02025 IEEE/ACM International Symposium on Low Power Electronics and Design"
+    "conference_date": "June 30 - July 2, 2025",
+    "abstract_deadline": null,
+    "location": "New Orleans, LA, USA",
+    "name": "GLSVLSI 2026",
+    "url": "https://glsvlsi.org/",
+    "last_checked": "2025-11-02T15:29:05.231909",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
-  "FPGA_2025": {
-    "name": "FPGA 2025",
-    "url": "https://www.isfpga.org/",
-    "paper_deadline": "September 24, 2025",
-    "submission_type": "Abstract",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:01:11.128809",
-    "full_name": "International Symposium on Field-Programmable Gate Arrays"
+  "CICC_2025": {
+    "paper_deadline": "November 17, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "April 19 \u2013 22, 2026",
+    "abstract_deadline": null,
+    "location": "Seattle, WA, USA",
+    "name": "CICC 2025",
+    "url": "https://www.ieee-cicc.org/",
+    "last_checked": "2025-11-02T15:29:08.343048",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
-  "FPGA_2026": {
-    "name": "FPGA 2026",
-    "url": "https://www.isfpga.org/",
-    "paper_deadline": "September 24, 2025",
-    "submission_type": "Abstract",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:01:12.537148",
-    "full_name": "International Symposium on Field-Programmable Gate Arrays"
+  "CICC_2026": {
+    "paper_deadline": "November 17, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "April 19 \u2013 22, 2026",
+    "abstract_deadline": null,
+    "location": "Seattle, WA, USA",
+    "name": "CICC 2026",
+    "url": "https://www.ieee-cicc.org/",
+    "last_checked": "2025-11-02T15:29:11.286935",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
+  },
+  "ISCAS_2025": {
+    "paper_deadline": "October 28, 2024",
+    "submission_type": "Regular Paper",
+    "conference_date": "May 25-28, 2025",
+    "abstract_deadline": null,
+    "location": "London, United Kingdom",
+    "name": "ISCAS 2025",
+    "url": "https://2025.ieee-iscas.org/",
+    "last_checked": "2025-11-02T15:29:35.505294",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
+  },
+  "ISCAS_2026": {
+    "paper_deadline": "Oct 26, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "MAY 24-27, 2026",
+    "abstract_deadline": null,
+    "location": "SHANGHAI, CHINA",
+    "name": "ISCAS 2026",
+    "url": "https://2026.ieee-iscas.org/",
+    "last_checked": "2025-11-02T15:29:38.968623",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "FCCM_2025": {
+    "paper_deadline": "January 17, 2026 (No Extensions)",
+    "submission_type": "Regular Paper",
+    "conference_date": "May 13 \u2013 16, 2026, Atlanta, GA, USA",
+    "abstract_deadline": "January 10, 2026 (No Extensions)",
+    "location": "Atlanta, GA, USA",
     "name": "FCCM 2025",
     "url": "https://www.fccm.org/",
-    "paper_deadline": "January 10, 2026",
-    "submission_type": "Abstract",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:01:13.724899",
-    "full_name": "The 34th IEEE International Symposium on Field-Programmable Custom Computing Machines"
+    "last_checked": "2025-11-02T15:30:03.365047",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "FCCM_2026": {
+    "paper_deadline": "January 17, 2026 (No Extensions)",
+    "submission_type": "Full Paper Submission",
+    "conference_date": "May 13-16, 2026",
+    "abstract_deadline": "January 10, 2026 (No Extensions)",
+    "location": "Atlanta, GA, USA",
     "name": "FCCM 2026",
     "url": "https://www.fccm.org/",
-    "paper_deadline": "January 10, 2026",
-    "submission_type": "Abstract",
-    "conference_date": null,
-    "last_checked": "2025-11-01T22:01:14.846623",
-    "full_name": "The 34th IEEE International Symposium on Field-Programmable Custom Computing Machines"
+    "last_checked": "2025-11-02T15:30:06.778181",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
+  },
+  "VTS_2025": {
+    "paper_deadline": "November 25, 2024 (FIRM)",
+    "submission_type": "Regular Paper",
+    "conference_date": "April 28-30 2025",
+    "abstract_deadline": null,
+    "location": "Tempe, AZ, USA",
+    "name": "VTS 2025",
+    "url": "https://tttc-vts.org/public_html/new/2025/index.html",
+    "last_checked": "2025-11-02T15:30:18.029592",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "VTS_2026": {
+    "paper_deadline": "November 10, 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "null",
+    "abstract_deadline": "November 3, 2025",
+    "location": "null",
     "name": "VTS 2026",
     "url": "https://tttc-vts.org/public_html/new/2026/call-for-papers/",
-    "paper_deadline": "January 31, 2026",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:28:35.585628",
-    "full_name": "Author Information | 44th IEEE VLSI Test Symposium 2026",
-    "submission_type": "Regular Paper"
+    "last_checked": "2025-11-02T15:30:23.246281",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "SOSP_2025": {
+    "paper_deadline": "April 17, 2025; 23:59 PT",
+    "submission_type": "Regular Paper",
+    "conference_date": "October 14 - 16, 2025",
+    "abstract_deadline": "April 10, 2025; 23:59 PT",
+    "location": "Seoul, Republic of Korea",
     "name": "SOSP 2025",
     "url": "https://sigops.org/s/conferences/sosp/2025/index.html",
-    "paper_deadline": "April 10, 2025",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:28:42.040413",
-    "full_name": "SOSP 2025: The 31st Symposium on Operating Systems Principles",
-    "submission_type": "Regular Paper"
+    "last_checked": "2025-11-02T15:30:36.310880",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
+  },
+  "OSDI_2026": {
+    "paper_deadline": "Thursday, December 11, 2025",
+    "submission_type": "Regular Paper, Abstract",
+    "conference_date": "July 13\u201315, 2026",
+    "abstract_deadline": "Thursday, December 4, 2025",
+    "location": "Seattle, WA, USA",
+    "name": "OSDI 2026",
+    "url": "https://www.usenix.org/conference/osdi26",
+    "last_checked": "2025-11-02T15:30:52.970167",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "EUROSYS_2025": {
+    "paper_deadline": {
+      "Spring deadline": "May 21, 2024",
+      "Fall deadline": "October 22, 2024"
+    },
+    "submission_type": {
+      "Spring deadline": "Regular Paper",
+      "Fall deadline": "Regular Paper"
+    },
+    "conference_date": "5 days in Rotterdam, co-located with ACM ASPLOS 2025",
+    "abstract_deadline": {
+      "Spring deadline": "May 14, 2024",
+      "Fall deadline": "October 15, 2024"
+    },
+    "location": "Rotterdam",
     "name": "EUROSYS 2025",
     "url": "https://2025.eurosys.org/index.html",
-    "paper_deadline": "September 23, 2024",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:28:48.175866",
-    "full_name": "EuroSys 2025",
-    "submission_type": "Regular Paper"
+    "last_checked": "2025-11-02T15:30:57.443190",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "EUROSYS_2026": {
+    "paper_deadline": {
+      "Spring deadline": "May 15, 2025 (AoE)",
+      "Fall deadline": "September 25, 2025 (AoE)"
+    },
+    "submission_type": {
+      "Spring deadline": "Full paper submissions",
+      "Fall deadline": "Full paper submissions"
+    },
+    "conference_date": "April 27th\u201430th, 2026",
+    "abstract_deadline": {
+      "Spring deadline": "May 8, 2025 (AoE)",
+      "Fall deadline": "September 18, 2025 (AoE)"
+    },
+    "location": "Edinburgh, UK",
     "name": "EUROSYS 2026",
     "url": "https://2026.eurosys.org/",
-    "paper_deadline": "September 26, 2025",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:28:49.260656",
-    "full_name": "EuroSys 2026",
-    "submission_type": "Regular Paper"
+    "last_checked": "2025-11-02T15:31:01.873905",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   },
   "CHES_2025": {
+    "paper_deadline": "14 April 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "September 14-18, 2025",
+    "abstract_deadline": null,
+    "location": "Kuala Lumpur, Malaysia",
     "name": "CHES 2025",
     "url": "https://ches.iacr.org/2025/",
-    "paper_deadline": "15 July 2024",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:28:53.363750",
-    "full_name": "CHES 2025",
-    "submission_type": "Regular Paper"
-  },
-  "CHES_2026": {
-    "name": "CHES 2026",
-    "url": "https://ches.iacr.org/2026/",
-    "paper_deadline": "15 July 2025",
-    "conference_date": null,
-    "last_checked": "2025-11-01T21:28:54.757050",
-    "full_name": "CHES 2026",
-    "submission_type": "Regular Paper"
+    "last_checked": "2025-11-02T15:31:11.732571",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
   }
 }
