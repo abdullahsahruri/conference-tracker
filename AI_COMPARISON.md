@@ -1,38 +1,42 @@
-# 🤖 AI Extraction Methods: Which One Should You Use?
+# 🤖 Extraction Methods Comparison
 
-Quick comparison to help you choose the best AI extraction method for your needs.
+Comparison of the two extraction methods available in this tracker.
 
 ## TL;DR - Quick Recommendations
 
 | Your Situation | Best Choice |
 |---------------|-------------|
-| **Want 100% free** | 🆓 **Ollama** (llama3.2) |
-| **Want best accuracy** | 💰 Claude API |
-| **Have limited compute** | 💰 Claude API or Regex |
-| **Want fastest extraction** | 💰 Claude API |
-| **Privacy concerns** | 🆓 **Ollama** |
-| **No budget at all** | 🆓 **Ollama** or Regex |
+| **Want better accuracy (90% vs 66%)** | 🆓 **Ollama AI** |
+| **Want 100% free** | 🆓 **Ollama** or 🔧 Regex (both free!) |
+| **Have limited compute (<4GB RAM)** | 🔧 Regex |
+| **Want fastest extraction (2 min vs 8 min)** | 🔧 Regex |
+| **Need submission types extracted** | 🆓 **Ollama** |
+| **No setup hassle** | 🔧 Regex (already working!) |
+
+---
 
 ## Detailed Comparison
 
-### 1. 🆓 Ollama (Local LLM) - RECOMMENDED FOR FREE
+### 1. 🆓 Ollama (Local AI) - RECOMMENDED
 
 **File:** `ai_conference_extractor_ollama.py`
-**Setup Guide:** `OLLAMA_SETUP.md`
+**Setup Guide:** [OLLAMA_SETUP.md](OLLAMA_SETUP.md)
 
 #### Pros:
+- ✅ **90% success rate** - Finds 26/29 conferences
 - ✅ **100% FREE** - No costs whatsoever
 - ✅ **Unlimited usage** - Extract as many times as you want
 - ✅ **Privacy** - All data stays on your machine
 - ✅ **No API keys** - Simple setup
 - ✅ **Works offline** - After initial model download
-- ✅ **90% success rate** - Finds 26/29 conferences
+- ✅ **Extracts submission types** - Regular/Abstract/Late Breaking/etc.
+- ✅ **Multi-track deadlines** - Handles conferences with Spring/Fall tracks
 
 #### Cons:
-- ❌ Slower (~8 min for 29 conferences vs 3 min with Claude)
+- ❌ Slower (~8 min for 29 conferences vs 2 min with regex)
 - ❌ Requires local compute (4GB+ RAM)
 - ❌ Initial setup needed (~5 minutes)
-- ❌ Slightly lower accuracy (90% vs 93%)
+- ❌ Slightly lower accuracy than paid cloud AI
 
 #### Cost:
 - **Setup**: $0
@@ -41,58 +45,28 @@ Quick comparison to help you choose the best AI extraction method for your needs
 - **Forever**: **$0** 🎉
 
 #### Best For:
-- Users who want free, unlimited usage
+- Users who want better accuracy than regex
 - Privacy-conscious users
 - Those with decent local hardware (4GB+ RAM)
 - Projects with no budget
 
 ---
 
-### 2. 💰 Claude API (Cloud)
+### 2. 🔧 Regex - DEFAULT METHOD
 
-**File:** `ai_conference_extractor.py`
-**Setup Guide:** `AI_SETUP.md`
-
-#### Pros:
-- ✅ **Best accuracy** - 93% success rate (27/29 conferences)
-- ✅ **Fastest** - ~3 min for 29 conferences
-- ✅ **No local compute** - Runs in cloud
-- ✅ **Latest models** - Always up to date
-- ✅ **Easy setup** - Just get API key
-
-#### Cons:
-- ❌ **Costs money** - ~$15-20/month for daily updates
-- ❌ Requires API key
-- ❌ Needs internet connection
-- ❌ Data sent to cloud
-
-#### Cost:
-- **Free tier**: $5 credit (~500 extractions)
-- **After free tier**: ~$0.009 per conference
-- **Monthly** (daily updates): ~$15-16
-- **Annual**: ~$180-192
-
-#### Best For:
-- Users with budget for best results
-- Those who want fastest extraction
-- Users without powerful local hardware
-- Projects that prioritize accuracy
-
----
-
-### 3. 🔧 Regex (Current Method)
-
-**File:** `conference_tracker.py` (current)
+**File:** `conference_tracker.py`
 
 #### Pros:
 - ✅ **100% FREE**
-- ✅ **Fastest** - ~2 min for 29 conferences
-- ✅ **No dependencies** - Just Python
+- ✅ **Fastest** - ~2 min for 29 conferences (4x faster than AI)
+- ✅ **No dependencies** - Just Python + requests
 - ✅ **Works offline**
-- ✅ **No setup**
+- ✅ **No setup** - Already working!
+- ✅ **Runs on GitHub Actions** - Works 24/7 even when computer is off
+- ✅ **Very lightweight** - Minimal RAM/CPU usage
 
 #### Cons:
-- ❌ **Lowest accuracy** - 66% success rate (19/29 conferences)
+- ❌ **66% success rate** - Finds only 19/29 conferences
 - ❌ Misses complex date formats
 - ❌ Can't understand context
 - ❌ Requires manual pattern updates
@@ -102,9 +76,10 @@ Quick comparison to help you choose the best AI extraction method for your needs
 - **Everything**: $0
 
 #### Best For:
-- Users who want simplest solution
+- Users who want zero setup
 - Those satisfied with current results
 - Projects where missing some deadlines is OK
+- Automatic daily monitoring (GitHub Actions)
 
 ---
 
@@ -113,47 +88,86 @@ Quick comparison to help you choose the best AI extraction method for your needs
 ### Success Rate (29 conferences tested)
 
 | Method | Found | Success Rate | Missed |
-|--------|-------|--------------|---------|
+|--------|-------|--------------|---------  |
 | **Ollama (llama3.2)** | 26/29 | **90%** | 3 |
-| Claude API | 27/29 | **93%** | 2 |
 | Regex | 19/29 | 66% | 10 |
+
+**Winner:** Ollama finds **36% more conferences** (7 additional deadlines)!
 
 ### Speed (time to process all 29 conferences)
 
 | Method | Time | Speed Rating |
-|--------|------|--------------|
+|--------|------|--------------  |
 | Regex | ~2 min | ⚡⚡⚡ Fastest |
-| Claude API | ~3 min | ⚡⚡ Fast |
-| **Ollama** | **~8 min** | **⚡ Moderate** |
+| **Ollama** | **~8 min** | **⚡⚡ Moderate** |
 
-### Cost (1 year, daily updates)
+**Winner:** Regex is **4x faster**, but Ollama finds more deadlines.
 
-| Method | Annual Cost | Savings vs Claude |
-|--------|-------------|-------------------|
-| **Ollama** | **$0** | **Save $180-240** |
-| Regex | $0 | Save $180-240 |
-| Claude API | $180-240 | - |
+### Cost (forever)
+
+| Method | Annual Cost |
+|--------|-------------|
+| **Ollama** | **$0** 🆓 |
+| Regex | $0 🆓 |
+
+**Winner:** **Both are 100% FREE!** 🎉
+
+---
 
 ## Feature Comparison
 
-| Feature | Regex | Ollama | Claude API |
-|---------|-------|--------|------------|
-| Paper deadline | ✅ | ✅ | ✅ |
-| Submission type | ❌ | ✅ | ✅ |
-| Abstract deadline | ❌ | ✅ | ✅ |
-| Conference dates | ❌ | ✅ | ✅ |
-| Location | ❌ | ✅ | ✅ |
-| Notification date | ❌ | ❌ | ✅ |
-| Camera ready deadline | ❌ | ❌ | ✅ |
-| Context understanding | ❌ | ✅ | ✅✅ |
+| Feature | Regex | Ollama |
+|---------|-------|--------|
+| Paper deadline | ✅ | ✅ |
+| Submission type | ❌ | ✅ |
+| Abstract deadline | ❌ | ✅ |
+| Conference dates | ❌ | ✅ |
+| Location | ❌ | ✅ |
+| Context understanding | ❌ | ✅ |
+| Multi-track deadlines | ❌ | ✅ |
+| Speed | ⚡⚡⚡ | ⚡⚡ |
+| Success rate | 66% | 90% |
 
-## Hybrid Approaches
+---
 
-### Option 1: Ollama Primary, Regex Fallback
-**Best for:** Free users who want high success rate
+## Hybrid Approach (RECOMMENDED)
+
+**Best of both worlds:** Use Ollama for better accuracy, with Regex as backup.
+
+### Option 1: Regex Auto + Ollama Manual
+
+**How it works:**
+1. Regex runs automatically daily via GitHub Actions (even when computer is off)
+2. Run Ollama manually once a week/month for better accuracy
+3. Commit Ollama results to update database
+
+**Benefits:**
+- ✅ Automatic daily monitoring (regex)
+- ✅ High accuracy when you run AI (90%)
+- ✅ 100% FREE
+- ✅ No computer needed for daily updates
+
+**How to use:**
+```bash
+# Automatic (already running):
+# - GitHub Actions runs conference_tracker.py daily at 9 AM UTC
+
+# Manual AI update (when you want better results):
+ollama serve &
+python3 conference_tracker_ai.py
+git add conference_database.json
+git commit -m "Update with AI extraction"
+git push
+```
+
+**Result:** Best success rate, zero cost! 🎯
+
+### Option 2: Ollama with Regex Fallback
+
+**For advanced users:** Modify `conference_tracker.py` to try Ollama first.
 
 ```python
-# Try Ollama first
+# Try Ollama first (requires computer on + Ollama running)
 info = extract_conference_info_with_ollama(url, name)
 if info:
     return info
@@ -162,101 +176,74 @@ if info:
 return extract_with_regex(url, name)
 ```
 
-**Result:** 90% success rate, $0 cost
+**Result:** 90% success rate, but only works when computer is on.
 
-### Option 2: Regex Primary, Claude for Failures
-**Best for:** Budget-conscious users
-
-```python
-# Try regex first (fast and free)
-info = extract_with_regex(url, name)
-if info:
-    return info
-
-# Use Claude for difficult ones
-return extract_conference_info_with_ai(url, name)
-```
-
-**Result:** ~85% success rate, ~$5/month
-
-### Option 3: All Three!
-**Best for:** Maximum success rate
-
-```python
-# 1. Try regex (fastest)
-info = extract_with_regex(url, name)
-if info:
-    return info
-
-# 2. Try Ollama (free)
-info = extract_conference_info_with_ollama(url, name)
-if info:
-    return info
-
-# 3. Use Claude as last resort (most accurate)
-return extract_conference_info_with_ai(url, name)
-```
-
-**Result:** 95%+ success rate, ~$3/month
+---
 
 ## Our Recommendation
 
-### For Most Users: 🆓 **Ollama**
+### For Most Users: 🎯 **Hybrid Approach**
 
-Use Ollama with llama3.2:
-- ✅ 90% success rate (vs 66% with regex)
+Use the **Regex Auto + Ollama Manual** approach:
+- ✅ Automatic daily updates continue (even when computer off)
+- ✅ Run AI manually once a week for better accuracy
 - ✅ 100% FREE forever
-- ✅ Privacy preserved
-- ✅ Finds submission types automatically
-- ⚠️ Just 3x slower than Claude (8 min vs 3 min)
+- ✅ Best of both worlds
 
-**Setup:** See `OLLAMA_SETUP.md`
+**Setup:**
+1. Regex is already running automatically (no setup needed)
+2. Follow [OLLAMA_SETUP.md](OLLAMA_SETUP.md) to install Ollama (5 minutes)
+3. Run `python3 conference_tracker_ai.py` when you want AI accuracy
 
-### For Power Users: 💰 **Claude API**
-
-Use Claude if you:
-- Need absolute best accuracy (93%)
-- Want fastest possible extraction (3 min)
-- Have budget for AI services
-- Don't have powerful local hardware
-
-**Setup:** See `AI_SETUP.md`
-
-### For Budget-Constrained: 🔧 **Regex (Current)**
+### For Minimal Setup: 🔧 **Regex Only**
 
 Stick with regex if you:
 - Are satisfied with current 66% success rate
 - Want zero setup
-- Need absolute fastest speed (2 min)
+- Don't have 4GB+ RAM for Ollama
 - Can't run Ollama locally
 
 **No setup needed** - already working!
 
+### For Maximum Accuracy: 🆓 **Ollama Only**
+
+Use Ollama if you:
+- Need 90% accuracy (vs 66% with regex)
+- Want submission types automatically detected
+- Have 4GB+ RAM available
+- Can run tracker manually when computer is on
+
+**Setup:** See [OLLAMA_SETUP.md](OLLAMA_SETUP.md)
+
+---
+
 ## Quick Start Guides
 
-- **Ollama (FREE)**: See `OLLAMA_SETUP.md`
-- **Claude API**: See `QUICK_START_AI.md`
-- **Regex**: Already running!
+- **Ollama (FREE AI)**: See [OLLAMA_SETUP.md](OLLAMA_SETUP.md)
+- **Regex**: Already running! No setup needed.
+- **Hybrid Approach**: Install Ollama, run manually as needed
+
+---
 
 ## Questions?
 
-**Q: Can I use both Ollama and Claude?**
-A: Yes! Use Ollama first, fall back to Claude for difficult conferences.
-
 **Q: Which is most accurate?**
-A: Claude (93%) > Ollama (90%) > Regex (66%)
+A: Ollama (90%) > Regex (66%)
 
 **Q: Which is fastest?**
-A: Regex (2 min) > Claude (3 min) > Ollama (8 min)
+A: Regex (2 min) > Ollama (8 min)
 
 **Q: Which is cheapest?**
-A: Ollama & Regex ($0) > Claude ($15-20/month)
+A: Both are $0 - 100% FREE!
 
 **Q: Can Ollama run on GitHub Actions?**
-A: Yes, but complex. Easier to run locally and commit results.
+A: Technically yes, but it's complex. Easier to run locally and commit results.
 
 **Q: Does Ollama work on my machine?**
 A: If you have 4GB+ RAM, yes! Works on Linux, Mac, Windows (WSL).
+
+**Q: Why not use paid cloud AI?**
+A: This project focuses on 100% free solutions. Ollama gives 90% accuracy for $0!
 
 ---
 

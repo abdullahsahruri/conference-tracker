@@ -10,6 +10,6 @@ google-auth-oauthlib==1.2.0
 # Additional parsing utilities
 lxml==5.1.0
 
-# AI-powered extraction (optional)
-anthropic>=0.18.0  # Cloud API - requires ANTHROPIC_API_KEY (~$15-20/month)
-# For Ollama (FREE local LLM): Install from https://ollama.ai/ (no pip package needed)
+# AI-powered extraction (optional - 100% FREE)
+# Install Ollama from https://ollama.ai/ (no pip package needed)
+# Then: ollama pull llama3.2
