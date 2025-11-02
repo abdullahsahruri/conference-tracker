@@ -4,7 +4,7 @@
     "url": "https://www.iscaconf.org/isca2026/index.php",
     "paper_deadline": "November 10, 2025",
     "conference_date": null,
-    "last_checked": "2025-10-31T13:35:06.342465",
+    "last_checked": "2025-11-01T18:47:13.978049",
     "full_name": "ISCA 2026: Home"
   },
   "GLSVLSI_2025": {
@@ -12,15 +12,63 @@
     "url": "https://glsvlsi.org/",
     "paper_deadline": "March 17, 2025",
     "conference_date": null,
-    "last_checked": "2025-10-31T13:35:14.541107",
+    "last_checked": "2025-11-01T18:47:51.628360",
     "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
   },
   "GLSVLSI_2026": {
     "name": "GLSVLSI 2026",
-    "url": "http://glsvlsi.org/",
+    "url": "https://glsvlsi.org/",
     "paper_deadline": "March 17, 2025",
     "conference_date": null,
-    "last_checked": "2025-10-31T13:35:15.926612",
+    "last_checked": "2025-11-01T18:47:52.925309",
     "full_name": "GLSVLSI 2025, New Orleans, LA, USA"
+  },
+  "MICRO_2025": {
+    "name": "MICRO 2025",
+    "url": "https://microarch.org/micro58/",
+    "paper_deadline": "April 11, 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T18:47:15.812485",
+    "full_name": "MICRO 2025: Home"
+  },
+  "MICRO_2026": {
+    "name": "MICRO 2026",
+    "url": "https://microarch.org/",
+    "paper_deadline": "October 31, 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T18:47:18.263099",
+    "full_name": "MICRO: Home"
+  },
+  "VLSI_2025": {
+    "name": "VLSI 2025",
+    "url": "https://ieee-cas.org/event/conference/2025-ifipieee-33rd-international-conference-very-large-scale-integration-vlsi-soc",
+    "paper_deadline": "14 Jun 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T18:47:24.550207",
+    "full_name": "2025 IFIP/IEEE 33rd International Conference on Very Large Scale Integration (VLSI-SoC) | IEEE CASS"
+  },
+  "ICCAD_2026": {
+    "name": "ICCAD 2026",
+    "url": "https://www.iccad-conf.com/",
+    "paper_deadline": "January 31, 2026",
+    "conference_date": null,
+    "last_checked": "2025-11-01T18:48:03.530553",
+    "full_name": "ICCAD 2026 \u2013 10th International Conference on Control, Automation and Diagnosis"
+  },
+  "ISLPED_2025": {
+    "name": "ISLPED 2025",
+    "url": "https://www.islped.org/2025/",
+    "paper_deadline": "March 20, 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T18:47:48.332575",
+    "full_name": "ISLPED\u00a02025 IEEE/ACM International Symposium on Low Power Electronics and Design"
+  },
+  "ISLPED_2026": {
+    "name": "ISLPED 2026",
+    "url": "https://www.islped.org/2025/",
+    "paper_deadline": "March 20, 2025",
+    "conference_date": null,
+    "last_checked": "2025-11-01T18:47:50.138112",
+    "full_name": "ISLPED\u00a02025 IEEE/ACM International Symposium on Low Power Electronics and Design"
   }
 }

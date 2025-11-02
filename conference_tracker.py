@@ -42,7 +42,7 @@ CURRENT_YEAR = datetime.now().year
 NEXT_YEAR = CURRENT_YEAR + 1
 
 
-def load_conference_list(filename='conferences_test.txt') -> List[str]:
+def load_conference_list(filename='conferences_to_track.txt') -> List[str]:
     """
     Load list of conference acronyms to track.
 
