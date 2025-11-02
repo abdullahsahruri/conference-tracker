@@ -9,3 +9,6 @@ google-auth-oauthlib==1.2.0
 
 # Additional parsing utilities
 lxml==5.1.0
+
+# AI-powered extraction (optional - requires ANTHROPIC_API_KEY)
+anthropic>=0.18.0
