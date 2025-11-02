@@ -160,6 +160,7 @@ def extract_conference_info(url: str, conference_name: str) -> Optional[Dict]:
             'name': conference_name,
             'url': url,
             'paper_deadline': None,
+            'submission_type': 'Regular Paper',
             'conference_date': None,
             'last_checked': datetime.now().isoformat()
         }
@@ -192,6 +193,19 @@ def extract_conference_info(url: str, conference_name: str) -> Optional[Dict]:
 
                 if matches:
                     info['paper_deadline'] = matches[0].group()
+
+                    # Detect submission type from context
+                    section_lower = section_text.lower()
+                    if any(kw in section_lower for kw in ['late breaking', 'late-breaking', 'lbr']):
+                        info['submission_type'] = 'Late Breaking Results'
+                    elif any(kw in section_lower for kw in ['poster', 'poster session']):
+                        info['submission_type'] = 'Poster'
+                    elif any(kw in section_lower for kw in ['short paper', 'short-paper']):
+                        info['submission_type'] = 'Short Paper'
+                    elif any(kw in section_lower for kw in ['workshop', 'wip', 'work in progress', 'work-in-progress']):
+                        info['submission_type'] = 'Workshop/WIP'
+                    elif any(kw in section_lower for kw in ['abstract', 'abstract deadline']):
+                        info['submission_type'] = 'Abstract'
                     break
 
             if info['paper_deadline']:
@@ -220,6 +234,19 @@ def extract_conference_info(url: str, conference_name: str) -> Optional[Dict]:
 
                                 if matches:
                                     info['paper_deadline'] = matches[0].group()
+
+                                    # Detect submission type from row context
+                                    row_text = row.get_text().lower()
+                                    if any(kw in row_text for kw in ['late breaking', 'late-breaking', 'lbr']):
+                                        info['submission_type'] = 'Late Breaking Results'
+                                    elif any(kw in row_text for kw in ['poster', 'poster session']):
+                                        info['submission_type'] = 'Poster'
+                                    elif any(kw in row_text for kw in ['short paper', 'short-paper']):
+                                        info['submission_type'] = 'Short Paper'
+                                    elif any(kw in row_text for kw in ['workshop', 'wip', 'work in progress', 'work-in-progress']):
+                                        info['submission_type'] = 'Workshop/WIP'
+                                    elif any(kw in row_text for kw in ['abstract', 'abstract deadline']):
+                                        info['submission_type'] = 'Abstract'
                                     break
 
                             if info['paper_deadline']:
