@@ -3,7 +3,14 @@
     "allow": [
       "Bash(mkdir:*)",
       "Bash(python3:*)",
-      "Read(//home/asahruri/abdullahsahruri.github.io/**)"
+      "Read(//home/asahruri/abdullahsahruri.github.io/**)",
+      "Bash(conference_database.json)",
+      "Bash(cat:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(echo:*)",
+      "Bash(pkill:*)",
+      "Bash(wait)"
     ],
     "deny": [],
     "ask": []

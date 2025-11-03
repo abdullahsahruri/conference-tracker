@@ -1,0 +1,10 @@
+# Test with a few key conferences
+ISCA
+MICRO
+DAC
+ISCAS
+FPGA
+ISSCC
+VLSI
+HPCA
+ASPLOS

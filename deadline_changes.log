@@ -154,3 +154,43 @@
 [2025-11-03 02:25:43] URL CHANGE: HOST_2025: https://callforpaper.org/cfp/host-2025-hardware-oriented-security-and-trust-winter-submissions_2579 → https://www.euroframe.org/news/euroframe-conference-2025-cfp-deadline-extended.html
 [2025-11-03 02:26:20] DEADLINE CHANGE: CHES_2026: March 12, 2025 → March 15, 2025
 [2025-11-03 02:26:20] URL CHANGE: CHES_2026: https://www.asplos-conference.org/asplos2026/cfp/ → https://ches.iacr.org/2026/cfp_ches2026.pdf
+[2025-11-03 11:17:20] DEADLINE CHANGE: DAC_2026: November 17, 2025 → November 15, 2025
+[2025-11-03 11:17:20] URL CHANGE: DAC_2026: https://www.ieee-cicc.org/2026-call-for-papers/ → https://ieee-cas.org/files/ieeecass/2025-04/ASP-DAC-2026_CallForPapers.pdf
+[2025-11-03 11:19:08] DEADLINE CHANGE: GLSVLSI_2026: October 31, 2025 → November 15, 2025
+[2025-11-03 11:19:08] URL CHANGE: GLSVLSI_2026: https://utmessan.is/english/call-for-papers → https://glsvlsi.org/GLSVLSI2025-CFP-final.pdf
+[2025-11-03 11:19:29] DEADLINE CHANGE: CICC_2026: November 15, 2025 → November 17, 2025
+[2025-11-03 11:19:29] URL CHANGE: CICC_2026: https://www.ieee-cicc.org/wp-content/uploads/2025/09/CICC-2026-Call-for-Papers_FINAL.pdf → https://www.ieee-cicc.org/2026-call-for-papers/
+[2025-11-03 11:23:13] URL CHANGE: FCCM_2026: https://www.wp.fccm.org/call-for-papers-2026/ → https://www.fccm.org/call-for-papers-2026/
+[2025-11-03 11:23:43] DEADLINE CHANGE: ITC_2026: March 07, 2025 → November 10, 2025
+[2025-11-03 11:23:43] URL CHANGE: ITC_2026: https://www.computer.org/conferences/itc-cfp → https://itc2026.org/
+[2025-11-03 11:24:07] DEADLINE CHANGE: VTS_2026: January 05, 2026 → November 10, 2025
+[2025-11-03 11:24:07] URL CHANGE: VTS_2026: https://eajs.eu/2026-call-for-papers/ → https://tttc-vts.org/public_html/new/2026/call-for-papers/
+[2025-11-03 11:25:09] URL CHANGE: SOSP_2026: https://www.sigops.org/s/conferences/sosp/2026/cfp.html → https://sigops.org/s/conferences/sosp/2026/cfp.html
+[2025-11-03 12:12:40] NEW: ISCA_2026 discovered
+[2025-11-03 12:16:53] NEW: VLSI_2026 discovered
+[2025-11-03 12:19:06] NEW: ISCA_2026 discovered
+[2025-11-03 12:19:15] NEW: ISLPED_2026 discovered
+[2025-11-03 12:19:17] NEW: MICRO_2025 discovered
+[2025-11-03 12:19:49] NEW: HPCA_2025 discovered
+[2025-11-03 12:19:57] NEW: HPCA_2026 discovered
+[2025-11-03 12:20:10] NEW: CICC_2026 discovered
+[2025-11-03 12:20:18] NEW: ASPLOS_2026 discovered
+[2025-11-03 12:21:26] NEW: ISCA_2025 discovered
+[2025-11-03 12:21:37] NEW: ISCA_2026 discovered
+[2025-11-03 12:21:46] NEW: MICRO_2025 discovered
+[2025-11-03 12:22:17] NEW: HPCA_2026 discovered
+[2025-11-03 12:22:37] NEW: ASPLOS_2026 discovered
+[2025-11-03 12:24:06] NEW: ISSCC_2025 discovered
+[2025-11-03 12:25:18] NEW: ISSCC_2026 discovered
+[2025-11-03 12:26:01] NEW: VLSI_2026 discovered
+[2025-11-03 12:26:15] NEW: ICCAD_2025 discovered
+[2025-11-03 12:26:56] NEW: DAC_2025 discovered
+[2025-11-03 12:27:12] NEW: DAC_2026 discovered
+[2025-11-03 12:27:25] NEW: DATE_2025 discovered
+[2025-11-03 12:27:32] NEW: DATE_2026 discovered
+[2025-11-03 12:28:02] NEW: ASPDAC_2026 discovered
+[2025-11-03 12:28:12] NEW: ISLPED_2025 discovered
+[2025-11-03 12:28:26] NEW: ISLPED_2026 discovered
+[2025-11-03 12:28:50] NEW: GLSVLSI_2026 discovered
+[2025-11-03 12:29:01] NEW: CICC_2025 discovered
+[2025-11-03 12:29:15] NEW: CICC_2026 discovered
