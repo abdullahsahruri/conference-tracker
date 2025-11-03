@@ -580,14 +580,22 @@ def main():
                         print(f"      (Deadline should be {year-1}, {year}, or {year+1})")
                         continue
 
-                    # Check 2: Don't accept deadlines that already passed
-                    # This catches old conference websites (e.g., GLSVLSI 2024 site when searching for 2025)
+                    # Check 2: Don't accept deadlines that are VERY old (>18 months past)
+                    # Allow recently passed deadlines because 2026 CFPs may not be posted yet
+                    # This catches old conference websites (e.g., GLSVLSI 2024 site when searching for 2026)
                     try:
+                        from dateutil.relativedelta import relativedelta
                         deadline_date = parser.parse(str(deadline), fuzzy=True)
-                        if deadline_date < datetime.now():
-                            print(f"  ⚠️  Skipping: Deadline already passed ({deadline})")
-                            print(f"      (Likely found old conference website)")
+                        months_ago = relativedelta(datetime.now(), deadline_date).months + \
+                                     (relativedelta(datetime.now(), deadline_date).years * 12)
+
+                        if months_ago > 18:  # More than 1.5 years old
+                            print(f"  ⚠️  Skipping: Deadline too old ({deadline}, {months_ago} months ago)")
+                            print(f"      (Likely found very old conference website)")
                             continue
+                        elif deadline_date < datetime.now():
+                            print(f"  ℹ️  Note: Deadline has passed ({deadline})")
+                            print(f"      (But keeping - 2026 CFP may not be posted yet)")
                     except:
                         pass  # If we can't parse the date, continue anyway
 
