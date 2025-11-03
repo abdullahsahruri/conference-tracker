@@ -49,6 +49,55 @@ CHANGES_LOG = 'deadline_changes.log'
 CURRENT_YEAR = datetime.now().year
 NEXT_YEAR = CURRENT_YEAR + 1
 
+# Conference full names (to help distinguish similar acronyms)
+CONFERENCE_FULL_NAMES = {
+    # Computer Architecture
+    'ISCA': 'International Symposium on Computer Architecture',
+    'MICRO': 'International Symposium on Microarchitecture',
+    'HPCA': 'High-Performance Computer Architecture',
+    'ASPLOS': 'Architectural Support for Programming Languages and Operating Systems',
+
+    # VLSI & Circuits
+    'ISSCC': 'International Solid-State Circuits Conference',
+    'VLSI': 'VLSI Technology and Circuits Symposium',
+    'ICCAD': 'International Conference on Computer-Aided Design',
+    'DAC': 'Design Automation Conference',
+    'DATE': 'Design Automation and Test in Europe',
+    'ASPDAC': 'Asia and South Pacific Design Automation Conference',
+    'ISLPED': 'International Symposium on Low Power Electronics and Design',
+    'GLSVLSI': 'Great Lakes Symposium on VLSI',
+    'CICC': 'Custom Integrated Circuits Conference',
+    'ESSCIRC': 'European Solid-State Circuits Conference',
+    'ISQED': 'International Symposium on Quality Electronic Design',
+    'VLSI-SOC': 'VLSI System on Chip Conference',
+
+    # Design Automation
+    'ISCAS': 'International Symposium on Circuits and Systems',
+    'ICCD': 'International Conference on Computer Design',
+    'ISPD': 'International Symposium on Physical Design',
+
+    # FPGA & Reconfigurable Computing
+    'FPGA': 'ACM/SIGDA International Symposium on Field-Programmable Gate Arrays',
+    'FCCM': 'Field-Configurable Custom Computing Machines',
+
+    # Testing & Verification
+    'ITC': 'International Test Conference',
+    'VTS': 'VLSI Test Symposium',
+    'ATS': 'Asian Test Symposium',
+
+    # Systems & Architecture
+    'SOSP': 'Symposium on Operating Systems Principles',
+    'OSDI': 'Operating Systems Design and Implementation',
+    'EUROSYS': 'European Conference on Computer Systems',
+
+    # Hardware Security
+    'HOST': 'Hardware Oriented Security and Trust',
+    'CHES': 'Cryptographic Hardware and Embedded Systems',
+
+    # Emerging Technologies
+    'HOTCHIPS': 'Hot Chips Symposium on High-Performance Chips',
+}
+
 
 def load_conference_list(filename='conferences_to_track.txt') -> List[str]:
     """
@@ -90,12 +139,15 @@ def search_conference(conference_name: str, year: int, return_multiple: bool = F
     try:
         from ddgs import DDGS
 
-        # Try multiple search strategies with domain specificity
+        # Get full conference name for more specific search
+        full_name = CONFERENCE_FULL_NAMES.get(conference_name, conference_name)
+
+        # Try multiple search strategies with full names for specificity
         queries = [
-            f"{conference_name} {year} conference call for papers computer architecture VLSI",  # Most specific
-            f"{conference_name} {year} IEEE ACM call for papers",  # IEEE/ACM conferences
-            f"{conference_name} {year} CFP deadline submission",  # Direct CFP search
-            f"{conference_name} {year} conference computer science",  # Fallback
+            f'"{conference_name} {year}" call for papers',  # Exact acronym + year in quotes
+            f'"{full_name}" {year} CFP',  # Full name search
+            f"{conference_name} {year} IEEE ACM deadline",  # IEEE/ACM conferences
+            f"{conference_name} {year} conference submission",  # Fallback
         ]
 
         all_urls = []
@@ -119,10 +171,67 @@ def search_conference(conference_name: str, year: int, return_multiple: bool = F
                         'wikipedia', 'twitter', 'facebook', 'linkedin', 'youtube', 'instagram',
                         'microsoft.com/blog', 'techcommunity.microsoft', 'postgres',  # Block Postgres/database conferences
                         'easychair.org/smart', 'springer', 'semanticscholar',  # Aggregators that confuse search
-                        'dmatheorynet.blogspot', 'wikicfp.com/cfp/servlet',  # Generic CFP aggregators (unreliable)
+                        'wikicfp.com', 'conferenceindex.org', 'conference-service.com',  # Generic CFP aggregators (unreliable)
+                        'github.com', 'elettronica-tech.it', 'conferencelists.org',  # Wrong domains
+                        'microbit.org', 'foodmicro', 'icfmh.org',  # Not tech conferences
+                        'callforpaper.org', 'manuscriptlink.com', 'blogspot.com',  # Aggregators
+                        'ourglocal.com', 'resurchify.com',  # More aggregators
                     ]
                     if any(skip in href_lower for skip in blocked_domains):
                         continue
+
+                    # Block conferences that sound similar but are different
+                    conference_blocklist = {
+                        'DAC': ['aspdac'],  # DAC should not match ASPDAC
+                        'MICRO': ['microbit', 'foodmicro', 'microbiology'],
+                        'VLSI': ['isvlsi'],  # VLSI should not match ISVLSI
+                        'ISCA': ['iscas'],  # ISCA should not match ISCAS
+                    }
+                    if conference_name in conference_blocklist:
+                        if any(blocked in href_lower or blocked in title for blocked in conference_blocklist[conference_name]):
+                            continue
+
+                    # CRITICAL: Verify URL actually contains the EXACT conference acronym
+                    # This prevents matching similar acronyms (e.g., ISCAS vs ISCA)
+                    import re
+                    conf_lower = conference_name.lower()
+                    year_str = str(year)
+
+                    # Extract path components from URL
+                    url_parts = re.split(r'[/\-_.]', href_lower)
+
+                    # Check if exact conference acronym appears as a token in URL
+                    has_exact_match = (
+                        conf_lower in url_parts or  # Exact match as path component
+                        f"{conf_lower}{year}" in url_parts or  # conference2026 format
+                        f"{year}{conf_lower}" in url_parts or  # 2026conference format
+                        f"{conf_lower}{year % 100:02d}" in url_parts  # conference26 format
+                    )
+
+                    # Check title contains exact acronym (with word boundaries)
+                    title_pattern = r'\b' + re.escape(conf_lower) + r'\b'
+                    has_conf_in_title = (
+                        re.search(title_pattern, title, re.IGNORECASE) is not None or
+                        full_name.lower() in title
+                    )
+
+                    # Require EXACT match (not substring) in URL or title
+                    if not (has_exact_match or has_conf_in_title):
+                        continue
+
+                    # ADDITIONAL CHECK: For short acronyms (<=5 chars), require year nearby
+                    # This prevents MICRO matching "food microbiology" or DAC matching "aspdac"
+                    if len(conference_name) <= 5:
+                        # Check if year appears near conference name in URL or title
+                        has_year_in_url = year_str in href_lower
+                        has_year_in_title = year_str in title
+
+                        # Also check if full name appears (strongest signal)
+                        has_full_name = full_name.lower() in (href_lower + ' ' + title)
+
+                        # Reject if acronym found but NO year and NO full name
+                        if not (has_year_in_url or has_year_in_title or has_full_name):
+                            continue
 
                     seen_urls.add(href)
 
