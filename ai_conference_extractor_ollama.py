@@ -141,7 +141,7 @@ Extract the following information and respond with ONLY valid JSON (no other tex
     "submission_type": "Regular Paper, Abstract, Late Breaking Results, Poster, or Workshop",
     "conference_date": "conference dates or null",
     "abstract_deadline": "abstract deadline or null",
-    "location": "city/country or null"
+    "location": "City, Country (e.g., 'Seoul, South Korea') or City, State, Country for US (e.g., 'Seattle, WA, USA') or null"
 }}
 
 CRITICAL VALIDATION RULES:
