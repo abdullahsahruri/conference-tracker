@@ -1,0 +1,19 @@
+#!/bin/bash
+# Clear all conferences from database and website
+
+echo "🗑️  Clearing conference database..."
+
+# Clear local database
+echo '{}' > conference_database.json
+echo "   ✅ Local database cleared"
+
+# Push to website
+cd /home/asahruri/abdullahsahruri.github.io
+cp /home/asahruri/work/conferences/conference_database.json assets/
+git add assets/conference_database.json
+git commit -m "Clear conference database"
+git push
+
+echo ""
+echo "✅ Database cleared and pushed to website!"
+echo "   Website will update in 1-2 minutes"
