@@ -115,9 +115,51 @@ def add_conference(conf_name, year, url):
 
 
 if __name__ == "__main__":
+    # Show help
+    if len(sys.argv) == 2 and sys.argv[1] in ['-h', '--help', 'help']:
+        print("""
+Conference Tracker - One Command Add
+=====================================
+
+Add a conference with AI extraction and auto-sync to website.
+
+USAGE:
+    ./add <conference_name> <year> <url>
+
+ARGUMENTS:
+    conference_name    Conference acronym (e.g., ISCA, MICRO, DAC)
+    year              Conference year (e.g., 2026)
+    url               Conference CFP/submission page URL
+
+EXAMPLES:
+    ./add ISCA 2026 https://iscaconf.org/isca2026/submit/papers.php
+    ./add MICRO 2026 https://microarch.org/micro58/submit/papers.php
+    ./add DAC 2026 https://dac.com/2026/cfp
+
+WHAT IT DOES:
+    1. Fetches the URL
+    2. AI extracts deadline, dates, location
+    3. Saves to database
+    4. Pushes to website (updates in 1-2 minutes)
+
+OTHER COMMANDS:
+    ./clear                       Clear all conferences
+    python3 manual_add_conference.py  View/edit manually
+
+REQUIREMENTS:
+    - Ollama running (ollama serve)
+    - llama3.1 or llama3.2 model installed
+
+Website: https://abdullahsahruri.github.io/conferences/
+""")
+        sys.exit(0)
+
+    # Check arguments
     if len(sys.argv) != 4:
-        print("Usage: python3 add.py <conference_name> <year> <url>")
-        print("Example: python3 add.py ISCA 2026 https://iscaconf.org/isca2026/submit/papers.php")
+        print("❌ Error: Wrong number of arguments")
+        print("\nUsage: ./add <conference_name> <year> <url>")
+        print("Example: ./add ISCA 2026 https://iscaconf.org/isca2026/submit/papers.php")
+        print("\nFor more help: ./add -h")
         sys.exit(1)
 
     conf_name = sys.argv[1]
