@@ -73,64 +73,80 @@ def load_conference_list(filename='conferences_to_track.txt') -> List[str]:
     return conferences
 
 
-def search_conference(conference_name: str, year: int) -> Optional[str]:
+def search_conference(conference_name: str, year: int, return_multiple: bool = False):
     """
-    Search the web for a conference and return the official website URL.
+    Search the web for a conference and return the official website URL(s).
 
     Uses DuckDuckGo search API (no API key required).
 
     Args:
         conference_name: Conference acronym (e.g., "ISCA")
         year: Conference year (e.g., 2026)
+        return_multiple: If True, return list of candidate URLs; if False, return best single URL
 
     Returns:
-        URL of the conference website, or None if not found
+        URL of the conference website, or list of URLs if return_multiple=True, or None if not found
     """
     try:
         from ddgs import DDGS
 
-        # Build search query - add "computer" for tech conferences
-        # to avoid matches with unrelated conferences with same acronym
-        query = f"{conference_name} {year} conference computer architecture"
+        # Try multiple search strategies
+        queries = [
+            f"{conference_name} {year} call for papers",  # Best: direct CFP search
+            f"{conference_name} {year} CFP deadlines",
+            f"{conference_name} {year} conference computer architecture",  # Fallback
+        ]
 
-        # Use DuckDuckGo search API
-        results = DDGS().text(query, max_results=10)
+        all_urls = []
+        seen_urls = set()
 
-        # Filter for conference-related URLs
-        for result in results:
-            href = result.get('href', '')
-            title = result.get('title', '').lower()
+        for query in queries:
+            try:
+                results = DDGS().text(query, max_results=10)
 
-            # Look for conference-related URLs
-            # Prioritize official conference sites (ending in .org, .com, .edu with conference name)
-            href_lower = href.lower()
+                for result in results:
+                    href = result.get('href', '')
+                    title = result.get('title', '').lower()
+                    href_lower = href.lower()
 
-            # Skip non-relevant sites
-            if any(skip in href_lower for skip in ['wikipedia', 'twitter', 'facebook', 'linkedin', 'youtube']):
-                continue
+                    # Skip duplicates and non-relevant sites
+                    if href in seen_urls:
+                        continue
+                    if any(skip in href_lower for skip in ['wikipedia', 'twitter', 'facebook', 'linkedin', 'youtube', 'instagram']):
+                        continue
 
-            # Look for conference indicators
-            if any(indicator in href_lower or indicator in title for indicator in
-                   [conference_name.lower(), str(year)]):
-                # Prefer URLs with both conference name and year
-                if conference_name.lower() in href_lower and str(year) in href_lower:
-                    return href
-                # Or at least the conference name in domain
-                elif conference_name.lower() in href_lower:
-                    return href
+                    seen_urls.add(href)
 
-        # If no perfect match, return first result with conference name
-        for result in results:
-            href = result.get('href', '')
-            if conference_name.lower() in href.lower():
-                return href
+                    # Prioritize CFP/deadline pages
+                    cfp_score = 0
+                    if any(term in href_lower for term in ['cfp', 'call-for-papers', 'callforpapers', 'submissions', 'submit']):
+                        cfp_score += 3
+                    if any(term in title for term in ['call for papers', 'cfp', 'deadline', 'submission']):
+                        cfp_score += 2
+                    if conference_name.lower() in href_lower and str(year) in href_lower:
+                        cfp_score += 2
+                    elif conference_name.lower() in href_lower:
+                        cfp_score += 1
 
-        print(f"  ⚠️  Could not find website for {conference_name} {year}")
-        return None
+                    if cfp_score > 0:
+                        all_urls.append((href, cfp_score))
+
+            except Exception as e:
+                continue  # Try next query
+
+        # Sort by score (highest first)
+        all_urls.sort(key=lambda x: x[1], reverse=True)
+
+        if return_multiple:
+            # Return top 3 URLs
+            return [url for url, score in all_urls[:3]] if all_urls else []
+        else:
+            # Return best single URL
+            return all_urls[0][0] if all_urls else None
 
     except Exception as e:
         print(f"  ❌ Search error for {conference_name} {year}: {e}")
-        return None
+        return [] if return_multiple else None
 
 
 def extract_conference_info(url: str, conference_name: str) -> Optional[Dict]:
@@ -398,21 +414,30 @@ def main():
         for year in [CURRENT_YEAR, NEXT_YEAR]:
             conf_key = f"{conf_name}_{year}"
 
-            # Search for conference website
+            # Search for conference website (get multiple candidates)
             print(f"  Searching for {conf_name} {year}...")
-            url = search_conference(conf_name, year)
+            candidate_urls = search_conference(conf_name, year, return_multiple=True)
 
-            if not url:
+            if not candidate_urls:
+                print(f"  ⚠️  Could not find website for {conf_name} {year}")
                 continue
 
-            print(f"  ✓ Found: {url[:60]}...")
+            # Try each URL until we successfully extract a deadline
+            info = None
+            for url in candidate_urls:
+                print(f"  ✓ Found: {url[:60]}...")
+                print(f"  Extracting deadline information...")
 
-            # Extract conference information
-            print(f"  Extracting deadline information...")
-            info = extract_conference_info(url, f"{conf_name} {year}")
+                info = extract_conference_info(url, f"{conf_name} {year}")
+
+                if info:
+                    # Successfully extracted!
+                    break
+                else:
+                    print(f"  ⚠️  No deadline found, trying next URL...")
 
             if not info:
-                print(f"  ⚠️  Could not extract deadline")
+                print(f"  ⚠️  Could not extract deadline from any URL")
                 continue
 
             # Validate that deadline year is reasonable for search year
