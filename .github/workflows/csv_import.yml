@@ -1,0 +1,68 @@
+name: Import Conferences from CSV
+
+# Trigger when CSV files are edited on GitHub
+on:
+  push:
+    paths:
+      - '**.csv'
+
+  # Allow manual triggering
+  workflow_dispatch:
+
+jobs:
+  import-and-sync:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Find and import CSV files
+        run: |
+          # Import any CSV file that contains conference data
+          for csv_file in *.csv; do
+            if [ -f "$csv_file" ] && [ "$csv_file" != "manual_conferences_template.csv" ]; then
+              echo "Importing $csv_file..."
+              python3 import_manual_conferences.py "$csv_file"
+            fi
+          done
+
+      - name: Commit updated database
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+
+          git add conference_database.json
+
+          # Commit if there are changes
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update conference database from CSV - $(date +'%Y-%m-%d %H:%M UTC')"
+
+      - name: Push changes to tracker repo
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
+
+      - name: Sync to website repository
+        run: |
+          # Clone website repo
+          git clone https://github.com/abdullahsahruri/abdullahsahruri.github.io.git site
+
+          # Copy database to website
+          cp conference_database.json site/assets/
+
+          # Commit and push to website
+          cd site
+          git config user.name "Conference Bot"
+          git config user.email "action@github.com"
+          git add assets/conference_database.json
+          git diff --quiet && git diff --staged --quiet || git commit -m "Update conferences from CSV - $(date +'%Y-%m-%d %H:%M UTC')"
+          git push https://${{ secrets.SITE_GITHUB_TOKEN }}@github.com/abdullahsahruri/abdullahsahruri.github.io.git master
