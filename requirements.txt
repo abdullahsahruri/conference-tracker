@@ -1,6 +1,7 @@
 # Web scraping dependencies
 requests==2.31.0
 beautifulsoup4==4.12.3
+ddgs>=9.0.0
 
 # Google Calendar API dependencies
 google-api-python-client==2.108.0

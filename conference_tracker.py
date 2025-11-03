@@ -74,7 +74,7 @@ def search_conference(conference_name: str, year: int) -> Optional[str]:
     """
     Search the web for a conference and return the official website URL.
 
-    Uses DuckDuckGo HTML search (no API key required).
+    Uses DuckDuckGo search API (no API key required).
 
     Args:
         conference_name: Conference acronym (e.g., "ISCA")
@@ -84,49 +84,43 @@ def search_conference(conference_name: str, year: int) -> Optional[str]:
         URL of the conference website, or None if not found
     """
     try:
-        # Build search query
-        query = f"{conference_name} {year} conference"
+        from ddgs import DDGS
 
-        # Use DuckDuckGo HTML search (no API required)
-        search_url = f"https://html.duckduckgo.com/html/?q={query.replace(' ', '+')}"
+        # Build search query - add "computer" for tech conferences
+        # to avoid matches with unrelated conferences with same acronym
+        query = f"{conference_name} {year} conference computer architecture"
 
-        headers = {
-            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
-        }
-
-        response = requests.get(search_url, headers=headers, timeout=10)
-        response.raise_for_status()
-
-        soup = BeautifulSoup(response.content, 'html.parser')
-
-        # Find search result links
-        results = soup.find_all('a', class_='result__url')
-
-        if not results:
-            # Try alternative parsing
-            results = soup.find_all('a', href=True)
+        # Use DuckDuckGo search API
+        results = DDGS().text(query, max_results=10)
 
         # Filter for conference-related URLs
-        for link in results[:10]:  # Check first 10 results
-            href = link.get('href', '')
-            text = link.get_text().lower()
-
-            # Clean DuckDuckGo redirect URLs
-            if 'uddg=' in href:
-                # Extract the actual URL from DuckDuckGo redirect
-                import urllib.parse
-                parsed = urllib.parse.parse_qs(urllib.parse.urlparse(href).query)
-                if 'uddg' in parsed:
-                    href = parsed['uddg'][0]
+        for result in results:
+            href = result.get('href', '')
+            title = result.get('title', '').lower()
 
             # Look for conference-related URLs
-            if any(indicator in href.lower() or indicator in text for indicator in
-                   [conference_name.lower(), 'conference', str(year)]):
-                # Clean the URL
-                if href.startswith('http'):
+            # Prioritize official conference sites (ending in .org, .com, .edu with conference name)
+            href_lower = href.lower()
+
+            # Skip non-relevant sites
+            if any(skip in href_lower for skip in ['wikipedia', 'twitter', 'facebook', 'linkedin', 'youtube']):
+                continue
+
+            # Look for conference indicators
+            if any(indicator in href_lower or indicator in title for indicator in
+                   [conference_name.lower(), str(year)]):
+                # Prefer URLs with both conference name and year
+                if conference_name.lower() in href_lower and str(year) in href_lower:
                     return href
-                elif href.startswith('//'):
-                    return 'https:' + href
+                # Or at least the conference name in domain
+                elif conference_name.lower() in href_lower:
+                    return href
+
+        # If no perfect match, return first result with conference name
+        for result in results:
+            href = result.get('href', '')
+            if conference_name.lower() in href.lower():
+                return href
 
         print(f"  ⚠️  Could not find website for {conference_name} {year}")
         return None
