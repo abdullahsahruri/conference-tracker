@@ -15,11 +15,17 @@ Usage:
 
 import csv
 import sys
+import os
 from manual_add_conference import add_manual_entry, list_conferences
 
 
-def import_from_csv(filename='manual_conferences.csv'):
-    """Import conferences from CSV file."""
+def import_from_csv(filename='manual_conferences.csv', force=False):
+    """Import conferences from CSV file.
+
+    Args:
+        filename: CSV file to import
+        force: If True, automatically overwrite existing entries without prompting
+    """
     try:
         with open(filename, 'r') as f:
             reader = csv.DictReader(f)
@@ -40,7 +46,8 @@ def import_from_csv(filename='manual_conferences.csv'):
                     submission_type=row.get('submission_type', 'Regular Paper').strip() or "Regular Paper",
                     conference_date=row.get('conference_date', '').strip() or None,
                     abstract_deadline=row.get('abstract_deadline', '').strip() or None,
-                    location=row.get('location', '').strip() or None
+                    location=row.get('location', '').strip() or None,
+                    force=force
                 )
                 count += 1
 
@@ -62,4 +69,8 @@ def import_from_csv(filename='manual_conferences.csv'):
 
 if __name__ == "__main__":
     filename = sys.argv[1] if len(sys.argv) > 1 else 'manual_conferences.csv'
-    import_from_csv(filename)
+
+    # Check if running in CI environment (GitHub Actions)
+    force = os.getenv('CI') == 'true' or '--force' in sys.argv
+
+    import_from_csv(filename, force=force)

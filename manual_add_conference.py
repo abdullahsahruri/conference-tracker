@@ -49,7 +49,8 @@ def add_manual_entry(
     submission_type: str = "Regular Paper",
     conference_date: Optional[str] = None,
     abstract_deadline: Optional[str] = None,
-    location: Optional[str] = None
+    location: Optional[str] = None,
+    force: bool = False
 ) -> None:
     """
     Add a manual conference entry to the database.
@@ -63,6 +64,7 @@ def add_manual_entry(
         conference_date: Conference dates (optional)
         abstract_deadline: Abstract deadline (optional)
         location: Conference location (optional)
+        force: If True, automatically overwrite existing entries (default: False)
     """
     database = load_database()
 
@@ -82,7 +84,7 @@ def add_manual_entry(
     }
 
     # Check if already exists
-    if conf_key in database:
+    if conf_key in database and not force:
         print(f"⚠️  {conf_key} already exists in database")
         print(f"   Old deadline: {database[conf_key].get('paper_deadline')}")
         print(f"   New deadline: {paper_deadline}")
