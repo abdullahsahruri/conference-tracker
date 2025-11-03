@@ -30,10 +30,11 @@ Done! Website updates in 1-2 minutes.
 ## All Commands
 
 ```bash
-./csv template          # Create empty CSV template
-./csv export            # Export current database to CSV
-./csv import <file>     # Import CSV and push to website
-./clear                 # Clear all conferences
+./csv template               # Create empty CSV template
+./csv export                 # Export current database to CSV
+./csv import <file>          # Import CSV and push to website
+./clear                      # Clear all conferences
+python3 suggest_conferences.py  # Get AI suggestions for related conferences
 ```
 
 ## Workflow
@@ -51,6 +52,20 @@ Done! Website updates in 1-2 minutes.
    ```bash
    ./csv import conferences.csv
    ```
+
+### Get Conference Suggestions
+
+```bash
+python3 suggest_conferences.py
+```
+
+Shows related computer architecture and VLSI conferences not yet tracked. Output is in CSV format - just copy the rows you want and paste into `my_conferences.csv`.
+
+Categories include:
+- Computer Architecture (ISCA, MICRO, HPCA, ASPLOS, etc.)
+- VLSI & Circuits (ISSCC, VLSI, CICC, ESSCIRC, etc.)
+- Design Automation (DAC, ICCAD, DATE, ASPDAC, etc.)
+- FPGA, Testing, Security, Systems, and more
 
 ### Manual Entry (Alternative)
 
