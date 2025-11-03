@@ -1,0 +1,40 @@
+name: Manual Sync to Website
+
+# This workflow can only SYNC existing database to website
+# It CANNOT run Ollama (local-only)
+# Use this when you've run tracker locally and just want to push to website
+
+on:
+  workflow_dispatch:  # Manual trigger only
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout tracker repo
+        uses: actions/checkout@v4
+
+      - name: Checkout website repo
+        uses: actions/checkout@v4
+        with:
+          repository: abdullahsahruri/abdullahsahruri.github.io
+          token: ${{ secrets.GITHUB_TOKEN }}
+          path: website
+
+      - name: Copy database to website
+        run: |
+          cp conference_database.json website/assets/conference_database.json
+
+      - name: Commit and push to website
+        run: |
+          cd website
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add assets/conference_database.json
+          git commit -m "Update conference database (manual sync)
+
+          - Synced from tracker repo
+          - Triggered manually via GitHub Actions
+          - $(date '+%Y-%m-%d %H:%M:%S')" || exit 0
+          git push

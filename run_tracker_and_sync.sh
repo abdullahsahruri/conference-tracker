@@ -5,9 +5,26 @@
 
 set -e  # Exit on any error
 
+# Log to file and console
+LOG_FILE="/home/asahruri/work/conferences/tracker.log"
+exec > >(tee -a "$LOG_FILE") 2>&1
+
+echo ""
 echo "======================================================================="
-echo "Conference Tracker with Auto-Sync"
+echo "Conference Tracker with Auto-Sync - $(date '+%Y-%m-%d %H:%M:%S')"
 echo "======================================================================="
+
+# Check if Ollama is running, start if needed
+if ! curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
+    echo "⚠️  Ollama not running, starting..."
+    ollama serve &
+    sleep 5
+    if ! curl -s http://localhost:11434/api/tags >/dev/null 2>&1; then
+        echo "❌ Failed to start Ollama"
+        exit 1
+    fi
+    echo "✅ Ollama started"
+fi
 
 # Step 1: Run the tracker with Ollama AI
 echo ""
