@@ -20,7 +20,7 @@ import json
 import os
 import subprocess
 from datetime import datetime
-from ai_conference_extractor_ollama import extract_conference_info_ollama
+from ai_conference_extractor_ollama import extract_conference_info_with_ollama
 
 
 DATABASE_FILE = 'conference_database.json'
@@ -85,7 +85,7 @@ def add_conference(conf_name, year, url):
 
     # Extract with AI
     print(f"🤖 Extracting from: {url}", flush=True)
-    info = extract_conference_info_ollama(url, conf_name, year)
+    info = extract_conference_info_with_ollama(url, conf_name, year)
 
     if not info:
         print("❌ AI extraction failed - URL may be blocked or have no deadline info")
