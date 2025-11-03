@@ -30,11 +30,12 @@ Done! Website updates in 1-2 minutes.
 ## All Commands
 
 ```bash
-./csv template               # Create empty CSV template
-./csv export                 # Export current database to CSV
-./csv import <file>          # Import CSV and push to website
-./clear                      # Clear all conferences
-python3 suggest_conferences.py  # Get AI suggestions for related conferences
+./csv template                    # Create empty CSV template
+./csv export                      # Export current database to CSV
+./csv import <file>               # Import CSV and push to website
+./clear                           # Clear all conferences
+python3 ai_suggest_conferences.py # AI-powered conference suggestions
+python3 suggest_conferences.py    # Curated conference list
 ```
 
 ## Workflow
@@ -55,11 +56,21 @@ python3 suggest_conferences.py  # Get AI suggestions for related conferences
 
 ### Get Conference Suggestions
 
+**AI-Powered (Recommended):**
+```bash
+python3 ai_suggest_conferences.py
+```
+
+Uses Ollama AI to intelligently suggest conferences based on what you already track. Falls back to web search and curated database if AI unavailable.
+
+**Curated List:**
 ```bash
 python3 suggest_conferences.py
 ```
 
-Shows related computer architecture and VLSI conferences not yet tracked. Output is in CSV format - just copy the rows you want and paste into `my_conferences.csv`.
+Shows conferences from a curated database of 30+ major conferences.
+
+Both output CSV format - just copy the rows you want and paste into `my_conferences.csv`.
 
 Categories include:
 - Computer Architecture (ISCA, MICRO, HPCA, ASPLOS, etc.)
