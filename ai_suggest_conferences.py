@@ -46,30 +46,36 @@ def search_conferences(query):
         return None
 
 
+def check_ollama_installed():
+    """Check if Ollama is installed and running."""
+    try:
+        result = subprocess.run(['ollama', 'list'], capture_output=True, timeout=5)
+        return result.returncode == 0
+    except (FileNotFoundError, subprocess.TimeoutExpired):
+        return False
+
+
 def ask_ollama_for_suggestions(existing_conferences, model='mistral'):
     """Use Ollama to suggest related conferences."""
 
-    prompt = f"""List 15 major computer architecture/VLSI conferences I'm NOT tracking yet.
-Currently tracking: {', '.join(existing_conferences)}
+    # Check if Ollama is available
+    if not check_ollama_installed():
+        print("   ⚠️  Ollama not found. Install with: curl -fsSL https://ollama.ai/install.sh | sh")
+        print(f"   Then run: ollama pull {model}")
+        return None
 
-Return ONLY valid JSON array:
-[
-  {{"acronym": "HPCA", "name": "High-Performance Computer Architecture", "category": "Architecture"}},
-  {{"acronym": "DAC", "name": "Design Automation Conference", "category": "Design Automation"}},
-  {{"acronym": "ISSCC", "name": "International Solid-State Circuits Conference", "category": "VLSI"}}
-]
-
-Categories: Architecture, VLSI, Design Automation, FPGA, Testing, Security, Systems, Power/Energy
-No explanation, ONLY the JSON array."""
+    prompt = f"""List 15 computer architecture/VLSI conferences NOT in: {', '.join(existing_conferences)}
+Return JSON only:
+[{{"acronym":"HPCA","name":"High-Performance Computer Architecture","category":"Architecture"}}]"""
 
     try:
-        print(f"   Using Ollama model: {model}")
+        print(f"   Using Ollama model: {model} (this may take 30-60 seconds)...")
         result = subprocess.run(
             ['ollama', 'run', model],
             input=prompt,
             capture_output=True,
             text=True,
-            timeout=60
+            timeout=120  # Increased timeout
         )
 
         output = result.stdout.strip()
@@ -84,17 +90,18 @@ No explanation, ONLY the JSON array."""
         return suggestions
 
     except subprocess.TimeoutExpired:
-        print("⏱️  Ollama timeout - using fallback list")
+        print(f"   ⏱️  Model '{model}' took too long (>120s)")
+        print(f"   💡 Try a smaller model: --model qwen2.5:7b")
         return None
     except FileNotFoundError:
-        print("⚠️  Ollama not found - using fallback list")
+        print("   ⚠️  Ollama command not found")
         return None
     except json.JSONDecodeError as e:
-        print(f"⚠️  Failed to parse AI response: {e}")
-        print(f"Raw output: {output[:200]}")
+        print(f"   ⚠️  AI didn't return valid JSON")
+        print(f"   Raw output (first 300 chars):\n{output[:300]}")
         return None
     except Exception as e:
-        print(f"⚠️  Ollama error: {e}")
+        print(f"   ⚠️  Error: {e}")
         return None
 
 
