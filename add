@@ -1,0 +1,5 @@
+#!/bin/bash
+# Wrapper script for easier usage
+# Usage: ./add ISCA 2026 https://iscaconf.org/isca2026
+
+python3 "$(dirname "$0")/add.py" "$@"
