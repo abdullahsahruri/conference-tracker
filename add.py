@@ -85,7 +85,8 @@ def add_conference(conf_name, year, url):
 
     # Extract with AI
     print(f"🤖 Extracting from: {url}", flush=True)
-    info = extract_conference_info_with_ollama(url, conf_name, year)
+    full_name = f"{conf_name} {year}"
+    info = extract_conference_info_with_ollama(url, full_name)
 
     if not info:
         print("❌ AI extraction failed - URL may be blocked or have no deadline info")
