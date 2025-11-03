@@ -3,14 +3,9 @@ requests==2.31.0
 beautifulsoup4==4.12.3
 ddgs>=9.0.0
 
-# Google Calendar API dependencies
-google-api-python-client==2.108.0
-google-auth-httplib2==0.2.0
-google-auth-oauthlib==1.2.0
-
 # Additional parsing utilities
 lxml==5.1.0
 
-# AI-powered extraction (optional - 100% FREE)
+# AI-powered extraction (100% FREE)
 # Install Ollama from https://ollama.ai/ (no pip package needed)
 # Then: ollama pull llama3.2

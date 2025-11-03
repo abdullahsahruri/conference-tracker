@@ -11,7 +11,7 @@ This system automatically:
 3. Extracts deadlines using AI (90% accuracy)
 4. Maintains a local database of conferences
 5. Detects deadline changes
-6. Updates Google Calendar and generates HTML table
+6. Generates HTML table for website display
 
 Requirements:
 - Ollama installed and running (ollama serve)

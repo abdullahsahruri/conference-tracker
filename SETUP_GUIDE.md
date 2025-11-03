@@ -11,8 +11,7 @@ No need to find URLs - just add conference names and the AI does everything auto
 3. **Validates data** (prevents duplicates, normalizes date formats)
 4. **Updates daily** via GitHub Actions (optional - works 24/7, even when your computer is off)
 5. **Sends notifications** when deadlines change
-6. **Syncs to Google Calendar** automatically
-7. **Displays on website** with color-coded deadlines
+6. **Displays on website** with color-coded deadlines
 
 ## Quick Start (10 minutes)
 
@@ -141,23 +140,6 @@ Run the tracker automatically every day, even when your computer is off.
 
 **Note:** GitHub Actions can't run Ollama, but you can still use it for scheduled manual runs or other automation.
 
-### Google Calendar Sync
-
-Automatically add deadlines to your Google Calendar.
-
-**Quick Setup:**
-
-1. Run the setup script:
-```bash
-python3 gcal_setup.py
-```
-
-2. Follow the browser OAuth flow
-
-3. Deadlines will automatically sync to your calendar!
-
-**For GitHub Actions automation:** See [AUTOMATION_SETUP.md](AUTOMATION_SETUP.md)
-
 ### Email Notifications
 
 Get notified when deadlines change.
@@ -241,7 +223,6 @@ Compares with previous data
 If changed:
   → Logs to deadline_changes.log
   → Sends email notification
-  → Updates Google Calendar
   → Regenerates website table
 ```
 
@@ -346,16 +327,10 @@ conference-tracker/
 │   ├── ai_conference_extractor_ollama.py # Ollama AI module
 │   ├── date_normalizer.py                # Date formatting
 │   ├── deadline_validator.py             # Deadline validation
-│   ├── main_scraper.py                   # Google Calendar sync
 │   └── email_notifier.py                 # Email alerts
 │
-├── ⚙️ Setup Scripts:
-│   ├── gcal_setup.py                     # Google OAuth setup
+├── ⚙️ Setup:
 │   └── requirements.txt                  # Python dependencies
-│
-├── 🔐 Credentials (not in git):
-│   ├── credentials.json                  # Google OAuth client
-│   └── token.json                        # Access token
 │
 ├── 📖 Documentation:
 │   ├── SETUP_GUIDE.md                    # This file!
@@ -445,9 +420,8 @@ A: Yes, through WSL (Windows Subsystem for Linux).
 2. ✅ **Download model** (`ollama pull llama3.1`)
 3. ✅ **Add your conferences** to `conferences_to_track.txt`
 4. ✅ **Run tracker** (`python3 conference_tracker.py`)
-5. ⚡ **Optional:** Set up Google Calendar sync
-6. ⚡ **Optional:** Set up email notifications
-7. ⚡ **Optional:** Set up GitHub Pages for public website
+5. ⚡ **Optional:** Set up email notifications
+6. ⚡ **Optional:** Set up GitHub Pages for public website
 
 **That's it! Your AI-powered conference tracker is ready! 🎓**
 
