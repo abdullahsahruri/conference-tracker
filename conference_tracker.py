@@ -415,7 +415,9 @@ def main():
                 print(f"  ⚠️  Could not extract deadline")
                 continue
 
-            # Validate that deadline year matches search year
+            # Validate that deadline year is reasonable for search year
+            # NOTE: It's NORMAL for deadlines to be in the year BEFORE the conference
+            # Example: ISCA 2026 (June 2026) has deadline November 2025 - this is CORRECT
             deadline = info.get('paper_deadline', '')
             if deadline and deadline != 'TBD' and not isinstance(deadline, dict):
                 import re
@@ -423,10 +425,12 @@ def main():
                 deadline_year_match = re.search(r'\d{4}', str(deadline))
                 if deadline_year_match:
                     deadline_year = int(deadline_year_match.group())
-                    # Only accept deadlines in the same year as the search year
-                    # This prevents: searching for 2026, finding 2025 site with 2026 deadline
-                    if deadline_year != year:
-                        print(f"  ⚠️  Skipping: Deadline year ({deadline_year}) doesn't match search year ({year})")
+                    # Allow deadline within ±1 year of conference year
+                    # ISCA 2026 → accept 2025, 2026, 2027 deadlines
+                    # Reject: ISCA 2026 → 2024 deadline (means we found wrong year website)
+                    if abs(deadline_year - year) > 1:
+                        print(f"  ⚠️  Skipping: Deadline year ({deadline_year}) too far from search year ({year})")
+                        print(f"      (Deadline should be {year-1}, {year}, or {year+1})")
                         continue
 
             print(f"  ✓ Deadline: {info.get('paper_deadline', 'Not found')}")
