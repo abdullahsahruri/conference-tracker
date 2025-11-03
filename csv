@@ -4,6 +4,8 @@
 case "$1" in
     export)
         python3 export_to_csv.py "${2:-conferences.csv}"
+        echo ""
+        echo "Edit the CSV, then run: ./csv import ${2:-conferences.csv}"
         ;;
     import)
         if [ -z "$2" ]; then
@@ -11,50 +13,58 @@ case "$1" in
             exit 1
         fi
         python3 import_manual_conferences.py "$2"
+        echo ""
         ./sync_to_website.sh
         ;;
     template)
         cp manual_conferences_template.csv "${2:-my_conferences.csv}"
         echo "✅ Template created: ${2:-my_conferences.csv}"
-        echo "   Edit it, then run: ./csv import ${2:-my_conferences.csv}"
+        echo ""
+        echo "Next steps:"
+        echo "  1. Edit ${2:-my_conferences.csv} in Excel/LibreOffice"
+        echo "  2. Run: ./csv import ${2:-my_conferences.csv}"
         ;;
     *)
-        cat << 'EOF'
-CSV Workflow Helper
-===================
+        cat << 'HELP'
+CSV Conference Management
+=========================
 
 COMMANDS:
 
-  ./csv export [file.csv]
-      Export current database to CSV for editing
-      Default: conferences.csv
-
-  ./csv import <file.csv>
-      Import CSV and push to website
-
-  ./csv template [file.csv]
+  ./csv template [filename]
       Create empty CSV template
       Default: my_conferences.csv
 
+  ./csv export [filename]
+      Export current database to CSV
+      Default: conferences.csv
+
+  ./csv import <filename>
+      Import CSV and push to website
+
 WORKFLOW:
 
-  1. Export current conferences:
-       ./csv export
+  Method 1: Start fresh
+    ./csv template
+    # Edit my_conferences.csv in Excel
+    ./csv import my_conferences.csv
 
-  2. Edit conferences.csv in Excel/etc.
-
-  3. Import changes:
-       ./csv import conferences.csv
-
-  OR start fresh with template:
-       ./csv template
-       # Edit my_conferences.csv
-       ./csv import my_conferences.csv
+  Method 2: Edit existing
+    ./csv export
+    # Edit conferences.csv in Excel
+    ./csv import conferences.csv
 
 CSV FORMAT:
   conference_name,year,paper_deadline,url,submission_type,conference_date,abstract_deadline,location
   ISCA,2026,November 17 2025,https://iscaconf.org/isca2026,Regular Paper,June 27-July 1 2026,November 10 2025,Raleigh NC
+  MICRO,2026,April 11 2026,https://microarch.org/micro59,Regular Paper,,,Seoul Korea
 
-EOF
+OTHER COMMANDS:
+  ./clear                       Clear all conferences
+  python3 manual_add_conference.py  Interactive add/edit/delete
+
+Website: https://abdullahsahruri.github.io/conferences/
+
+HELP
         ;;
 esac
