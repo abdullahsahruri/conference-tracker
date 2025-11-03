@@ -90,11 +90,12 @@ def search_conference(conference_name: str, year: int, return_multiple: bool = F
     try:
         from ddgs import DDGS
 
-        # Try multiple search strategies
+        # Try multiple search strategies with domain specificity
         queries = [
-            f"{conference_name} {year} call for papers",  # Best: direct CFP search
-            f"{conference_name} {year} CFP deadlines",
-            f"{conference_name} {year} conference computer architecture",  # Fallback
+            f"{conference_name} {year} conference call for papers computer architecture VLSI",  # Most specific
+            f"{conference_name} {year} IEEE ACM call for papers",  # IEEE/ACM conferences
+            f"{conference_name} {year} CFP deadline submission",  # Direct CFP search
+            f"{conference_name} {year} conference computer science",  # Fallback
         ]
 
         all_urls = []
@@ -112,7 +113,15 @@ def search_conference(conference_name: str, year: int, return_multiple: bool = F
                     # Skip duplicates and non-relevant sites
                     if href in seen_urls:
                         continue
-                    if any(skip in href_lower for skip in ['wikipedia', 'twitter', 'facebook', 'linkedin', 'youtube', 'instagram']):
+
+                    # Block social media and common wrong matches
+                    blocked_domains = [
+                        'wikipedia', 'twitter', 'facebook', 'linkedin', 'youtube', 'instagram',
+                        'microsoft.com/blog', 'techcommunity.microsoft', 'postgres',  # Block Postgres/database conferences
+                        'easychair.org/smart', 'springer', 'semanticscholar',  # Aggregators that confuse search
+                        'dmatheorynet.blogspot', 'wikicfp.com/cfp/servlet',  # Generic CFP aggregators (unreliable)
+                    ]
+                    if any(skip in href_lower for skip in blocked_domains):
                         continue
 
                     seen_urls.add(href)
@@ -446,10 +455,14 @@ def main():
             deadline = info.get('paper_deadline', '')
             if deadline and deadline != 'TBD' and not isinstance(deadline, dict):
                 import re
+                from dateutil import parser
+
                 # Extract year from deadline (e.g., "March 17, 2025" -> 2025)
                 deadline_year_match = re.search(r'\d{4}', str(deadline))
                 if deadline_year_match:
                     deadline_year = int(deadline_year_match.group())
+
+                    # Check 1: Deadline year validation
                     # Allow deadline within ±1 year of conference year
                     # ISCA 2026 → accept 2025, 2026, 2027 deadlines
                     # Reject: ISCA 2026 → 2024 deadline (means we found wrong year website)
@@ -457,6 +470,17 @@ def main():
                         print(f"  ⚠️  Skipping: Deadline year ({deadline_year}) too far from search year ({year})")
                         print(f"      (Deadline should be {year-1}, {year}, or {year+1})")
                         continue
+
+                    # Check 2: Don't accept deadlines that already passed
+                    # This catches old conference websites (e.g., GLSVLSI 2024 site when searching for 2025)
+                    try:
+                        deadline_date = parser.parse(str(deadline), fuzzy=True)
+                        if deadline_date < datetime.now():
+                            print(f"  ⚠️  Skipping: Deadline already passed ({deadline})")
+                            print(f"      (Likely found old conference website)")
+                            continue
+                    except:
+                        pass  # If we can't parse the date, continue anyway
 
             print(f"  ✓ Deadline: {info.get('paper_deadline', 'Not found')}")
 
