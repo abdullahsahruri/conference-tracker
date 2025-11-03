@@ -525,6 +525,19 @@ def main():
                 print(f"  ⚠️  Could not extract deadline")
                 continue
 
+            # Validate that deadline year matches search year
+            deadline = info.get('paper_deadline', '')
+            if deadline and deadline != 'TBD':
+                import re
+                # Extract year from deadline (e.g., "March 17, 2025" -> 2025)
+                deadline_year_match = re.search(r'\d{4}', deadline)
+                if deadline_year_match:
+                    deadline_year = int(deadline_year_match.group())
+                    # Skip if deadline year doesn't match search year or is in the past
+                    if deadline_year < year or deadline_year > year + 1:
+                        print(f"  ⚠️  Skipping: Deadline year ({deadline_year}) doesn't match search year ({year})")
+                        continue
+
             print(f"  ✓ Deadline: {info.get('paper_deadline', 'Not found')}")
 
             # Check for changes
