@@ -31,7 +31,12 @@ try:
     EMAIL_AVAILABLE = True
 except ImportError:
     EMAIL_AVAILABLE = False
-    print("⚠️  Email notifier not available")
+
+# Import date normalizer
+try:
+    from date_normalizer import normalize_conference_dates
+except ImportError:
+    normalize_conference_dates = None
 
 
 # Configuration
@@ -290,6 +295,9 @@ def extract_conference_info(url: str, conference_name: str) -> Optional[Dict]:
 
         # Only return if we found a deadline
         if info['paper_deadline']:
+            # Normalize date formats to consistent format
+            if normalize_conference_dates:
+                info = normalize_conference_dates(info)
             print(f"  ✓ Extracted: {info['paper_deadline']}")
             return info
         else:
