@@ -1,0 +1,9 @@
+# Manual Conference Entries Template
+# Fill in this CSV and run: python3 import_manual_conferences.py
+#
+# Format: conference_name,year,paper_deadline,url,submission_type,conference_date,abstract_deadline,location
+#
+# Example:
+# ISCA,2026,November 17 2025,https://iscaconf.org/isca2026,Regular Paper,June 27-July 1 2026,November 10 2025,Raleigh NC
+#
+conference_name,year,paper_deadline,url,submission_type,conference_date,abstract_deadline,location
