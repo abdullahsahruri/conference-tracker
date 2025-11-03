@@ -56,19 +56,19 @@ python3 suggest_conferences.py    # Curated conference list
 
 ### Get Conference Suggestions
 
-**AI-Powered (Recommended):**
-```bash
-python3 ai_suggest_conferences.py
-```
-
-Uses Ollama AI to intelligently suggest conferences based on what you already track. Falls back to web search and curated database if AI unavailable.
-
-**Curated List:**
+**Curated List (Recommended - Fast & Reliable):**
 ```bash
 python3 suggest_conferences.py
 ```
 
-Shows conferences from a curated database of 30+ major conferences.
+Instantly shows 50+ conferences from a curated database. No AI needed.
+
+**AI-Powered (Optional - Requires Ollama):**
+```bash
+python3 ai_suggest_conferences.py
+```
+
+Uses Ollama AI (requires fast hardware). Falls back to curated list if AI unavailable or slow.
 
 Both output CSV format - just copy the rows you want and paste into `my_conferences.csv`.
 
