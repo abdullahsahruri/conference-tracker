@@ -527,14 +527,15 @@ def main():
 
             # Validate that deadline year matches search year
             deadline = info.get('paper_deadline', '')
-            if deadline and deadline != 'TBD':
+            if deadline and deadline != 'TBD' and not isinstance(deadline, dict):
                 import re
                 # Extract year from deadline (e.g., "March 17, 2025" -> 2025)
-                deadline_year_match = re.search(r'\d{4}', deadline)
+                deadline_year_match = re.search(r'\d{4}', str(deadline))
                 if deadline_year_match:
                     deadline_year = int(deadline_year_match.group())
-                    # Skip if deadline year doesn't match search year or is in the past
-                    if deadline_year < year or deadline_year > year + 1:
+                    # Only accept deadlines in the same year as the search year
+                    # This prevents: searching for 2026, finding 2025 site with 2026 deadline
+                    if deadline_year != year:
                         print(f"  ⚠️  Skipping: Deadline year ({deadline_year}) doesn't match search year ({year})")
                         continue
 

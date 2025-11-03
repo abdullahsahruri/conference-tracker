@@ -53,18 +53,6 @@
     "extracted_with_ai": true,
     "ai_model": "llama3.1:latest"
   },
-  "FCCM_2025": {
-    "paper_deadline": "January 17, 2026 (No Extensions)",
-    "submission_type": "Regular Paper",
-    "conference_date": "May 13 \u2013 16, 2026, Atlanta, GA, USA",
-    "abstract_deadline": "January 10, 2026 (No Extensions)",
-    "location": "Atlanta, GA, USA",
-    "name": "FCCM 2025",
-    "url": "https://www.fccm.org/",
-    "last_checked": "2025-11-02T15:30:03.365047",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
-  },
   "FCCM_2026": {
     "paper_deadline": "January 17, 2026",
     "submission_type": "Full Paper Submission",
@@ -89,27 +77,6 @@
     "extracted_with_ai": true,
     "ai_model": "llama3.1:latest"
   },
-  "EUROSYS_2026": {
-    "paper_deadline": {
-      "Spring deadline": "May 15, 2025 (AoE)",
-      "Fall deadline": "September 25, 2025 (AoE)"
-    },
-    "submission_type": {
-      "Spring deadline": "Full paper submissions",
-      "Fall deadline": "Full paper submissions"
-    },
-    "conference_date": "April 27th\u201430th, 2026",
-    "abstract_deadline": {
-      "Spring deadline": "May 8, 2025 (AoE)",
-      "Fall deadline": "September 18, 2025 (AoE)"
-    },
-    "location": "Edinburgh, UK",
-    "name": "EUROSYS 2026",
-    "url": "https://2026.eurosys.org/",
-    "last_checked": "2025-11-02T15:31:01.873905",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
-  },
   "CHES_2025": {
     "paper_deadline": "14 April 2025",
     "submission_type": "Regular Paper",
@@ -131,30 +98,6 @@
     "name": "ISCA 2025",
     "url": "https://iscaconf.org/isca2025/",
     "last_checked": "2025-11-02T23:16:56.192415",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
-  },
-  "ICCAD_2025": {
-    "paper_deadline": "January 31, 2026",
-    "submission_type": "Regular Paper",
-    "conference_date": "July 7-9, 2026",
-    "abstract_deadline": null,
-    "location": "Lisbon, Portugal",
-    "name": "ICCAD 2025",
-    "url": "https://www.iccad-conf.com/",
-    "last_checked": "2025-11-02T23:18:00.970897",
-    "extracted_with_ai": true,
-    "ai_model": "llama3.1:latest"
-  },
-  "ATS_2026": {
-    "paper_deadline": "June 25",
-    "submission_type": "Proposal for programming in all areas of respiratory, critical care, and sleep medicine",
-    "conference_date": "May 15-20, 2026",
-    "abstract_deadline": null,
-    "location": "Orlando",
-    "name": "ATS 2026",
-    "url": "https://www.atsconferencenews.org/ats-2026-international-conference-call-for-input-open-today/",
-    "last_checked": "2025-11-02T23:20:43.533032",
     "extracted_with_ai": true,
     "ai_model": "llama3.1:latest"
   }
