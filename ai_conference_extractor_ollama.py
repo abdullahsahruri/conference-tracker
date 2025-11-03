@@ -91,7 +91,7 @@ def fetch_conference_website(url: str) -> Optional[str]:
 
 
 def extract_with_ollama(website_text: str, conference_name: str, url: str,
-                       model: str = "llama3.2") -> Optional[Dict]:
+                       model: str = "llama3.2", expected_year: int = None) -> Optional[Dict]:
     """
     Use Ollama to extract conference information.
 
@@ -100,14 +100,22 @@ def extract_with_ollama(website_text: str, conference_name: str, url: str,
         conference_name: Conference name
         url: Conference URL
         model: Ollama model to use (default: llama3.2)
+        expected_year: Expected conference year for validation
 
     Returns:
         Dictionary with extracted information or None
     """
+    # Extract expected year from conference name if not provided
+    if expected_year is None:
+        import re
+        year_match = re.search(r'(\d{4})', conference_name)
+        expected_year = int(year_match.group(1)) if year_match else datetime.now().year
+
     prompt = f"""Analyze this conference website and extract deadline information.
 
 Conference: {conference_name}
 Website: {url}
+Expected Year: {expected_year}
 
 Website Content:
 {website_text}
@@ -121,11 +129,20 @@ Extract the following information and respond with ONLY valid JSON (no other tex
     "location": "city/country or null"
 }}
 
-IMPORTANT:
+CRITICAL VALIDATION RULES:
+1. You are searching for {conference_name} (year {expected_year})
+2. The paper deadline should be in year {expected_year - 1} or early {expected_year}
+3. If you find a deadline in year {expected_year - 2} or earlier, this is WRONG YEAR - return "TBD"
+4. Example: For "CONFERENCE 2026", deadline should be 2025-2026, NOT 2024-2025
+5. If website shows "CONFERENCE 2025" but you're searching for 2026, return "TBD"
+
+DEADLINE EXTRACTION RULES:
 - Extract the PAPER SUBMISSION deadline, NOT notification/acceptance/camera-ready dates
 - Look for keywords: "paper deadline", "submission deadline", "abstract deadline", "call for papers"
 - IGNORE keywords: "notification", "acceptance", "camera ready", "final version", "author notification"
 - If multiple deadlines exist, choose the EARLIEST submission-related deadline
+- If deadline year doesn't match expected year (within 1 year), return "TBD"
+
 Return ONLY the JSON object."""
 
     try:
@@ -191,6 +208,18 @@ Return ONLY the JSON object."""
 
         # Validate we got at least a deadline
         if info.get('paper_deadline') and info['paper_deadline'] != 'TBD':
+            # Additional year validation as safety net
+            deadline = info.get('paper_deadline', '')
+            import re
+            deadline_year_match = re.search(r'\d{4}', str(deadline))
+            if deadline_year_match:
+                deadline_year = int(deadline_year_match.group())
+                # Check if deadline year is reasonable for the expected year
+                # Deadline should be within 1 year of expected conference year
+                if abs(deadline_year - expected_year) > 1:
+                    print(f"  ⚠️  AI extracted wrong year: deadline {deadline_year} doesn't match expected {expected_year}")
+                    return None
+
             return info
         else:
             return None
@@ -210,7 +239,7 @@ def extract_conference_info_with_ollama(url: str, conference_name: str,
 
     Args:
         url: Conference website URL
-        conference_name: Expected conference name
+        conference_name: Expected conference name (e.g., "ISCA 2026")
         model: Ollama model to use
 
     Returns:
@@ -224,13 +253,18 @@ def extract_conference_info_with_ollama(url: str, conference_name: str,
 
     print(f"  🤖 Using Ollama ({model}) to analyze {url[:60]}...")
 
+    # Extract expected year from conference name
+    import re
+    year_match = re.search(r'(\d{4})', conference_name)
+    expected_year = int(year_match.group(1)) if year_match else datetime.now().year
+
     # Fetch website content
     website_text = fetch_conference_website(url)
     if not website_text:
         return None
 
-    # Extract with Ollama
-    info = extract_with_ollama(website_text, conference_name, url, model)
+    # Extract with Ollama (pass expected year for validation)
+    info = extract_with_ollama(website_text, conference_name, url, model, expected_year)
 
     if info:
         print(f"  ✅ Ollama extracted: {info['paper_deadline']} ({info.get('submission_type', 'Regular Paper')})")
