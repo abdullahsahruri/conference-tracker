@@ -131,10 +131,13 @@ Extract the following information and respond with ONLY valid JSON (no other tex
 
 CRITICAL VALIDATION RULES:
 1. You are searching for {conference_name} (year {expected_year})
-2. The paper deadline should be in year {expected_year - 1} or early {expected_year}
-3. If you find a deadline in year {expected_year - 2} or earlier, this is WRONG YEAR - return "TBD"
-4. Example: For "CONFERENCE 2026", deadline should be 2025-2026, NOT 2024-2025
-5. If website shows "CONFERENCE 2025" but you're searching for 2026, return "TBD"
+2. NORMAL: Paper deadlines are usually 6-12 months BEFORE the conference
+   - For "{conference_name}", deadline in {expected_year - 1} or early {expected_year} is CORRECT
+   - Example: ISCA 2026 (event June 2026) → deadline November 2025 is CORRECT
+3. WRONG YEAR: If you find a deadline in year {expected_year - 2} or earlier, return "TBD"
+   - Example: Searching for "CONFERENCE 2026" but finding 2024 deadline → WRONG, return "TBD"
+4. CHECK WEBSITE YEAR: If the website clearly shows "{conference_name.split()[0]} {expected_year - 1}" instead of "{conference_name}", return "TBD"
+   - Example: Searching for "GLSVLSI 2026" but website says "GLSVLSI 2025" → return "TBD"
 
 DEADLINE EXTRACTION RULES:
 - Extract the PAPER SUBMISSION deadline, NOT notification/acceptance/camera-ready dates
@@ -209,15 +212,20 @@ Return ONLY the JSON object."""
         # Validate we got at least a deadline
         if info.get('paper_deadline') and info['paper_deadline'] != 'TBD':
             # Additional year validation as safety net
+            # NOTE: It's NORMAL for deadlines to be in the year BEFORE the conference
+            # Example: ISCA 2026 (June 2026) has deadline November 2025 - this is CORRECT
+            # We only reject if deadline is 2+ years away from conference year
             deadline = info.get('paper_deadline', '')
             import re
             deadline_year_match = re.search(r'\d{4}', str(deadline))
             if deadline_year_match:
                 deadline_year = int(deadline_year_match.group())
-                # Check if deadline year is reasonable for the expected year
-                # Deadline should be within 1 year of expected conference year
+                # Allow deadline within 1 year of conference (before or after)
+                # ISCA 2026 → allow 2025-2027 deadlines
+                # Reject: ISCA 2026 → 2024 deadline (means we found wrong year website)
                 if abs(deadline_year - expected_year) > 1:
                     print(f"  ⚠️  AI extracted wrong year: deadline {deadline_year} doesn't match expected {expected_year}")
+                    print(f"      (Deadline should be {expected_year-1}, {expected_year}, or {expected_year+1})")
                     return None
 
             return info
