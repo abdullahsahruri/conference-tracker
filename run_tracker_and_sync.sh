@@ -82,6 +82,11 @@ git commit -m "Auto-update conference database
 - Extracted with Ollama AI (llama3.1:latest)
 - $(date '+%Y-%m-%d %H:%M:%S')"
 
+# Pull remote changes first (in case website was updated)
+echo ""
+echo "Pulling remote changes..."
+git pull --rebase
+
 # Push to GitHub
 echo ""
 echo "Pushing to GitHub..."
