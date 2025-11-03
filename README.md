@@ -1,85 +1,69 @@
-# Conference Deadline Tracker
+# Conference Deadline Tracker - Interactive Mode
 
-AI-powered conference deadline tracker using **Ollama (100% FREE)** for intelligent extraction.
+**You provide URLs → AI extracts details → Auto-syncs to website**
 
 ## Quick Start
 
-### Run Tracker with Auto-Sync
-
 ```bash
-./run_tracker_and_sync.sh
+python3 interactive_add.py
 ```
 
-This single command will:
-1. Run the conference tracker with Ollama AI
-2. Extract deadlines for all conferences in `conferences_to_track.txt`
-3. Automatically copy `conference_database.json` to website repo
-4. Commit and push changes to GitHub Pages
+Then paste conference URLs one by one. AI extracts everything automatically!
 
-Your website at https://abdullahsahruri.github.io/conferences/ will update in 1-2 minutes!
-
-## Setup
-
-1. **Install Ollama** (one-time):
-   ```bash
-   curl -fsSL https://ollama.ai/install.sh | sh
-   ollama serve  # Keep running
-   ollama pull llama3.1
-   ```
-
-2. **Install Python dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-3. **Add conferences** to `conferences_to_track.txt`:
-   ```
-   ISCA
-   MICRO
-   DAC
-   YOUR_CONFERENCE
-   ```
-
-4. **Run tracker**:
-   ```bash
-   ./run_tracker_and_sync.sh
-   ```
-
-## Manual Commands
-
-If you prefer to run steps separately:
+## Example Session
 
 ```bash
-# Run tracker only
-python3 conference_tracker.py
+$ python3 interactive_add.py
 
-# Sync to website manually
-cp conference_database.json ../abdullahsahruri.github.io/assets/
-cd ../abdullahsahruri.github.io
-git add assets/conference_database.json
-git commit -m "Update conferences"
-git push
+======================================================================
+Interactive Conference Entry with AI Extraction
+======================================================================
+
+You provide the URL, AI extracts the details.
+
+======================================================================
+Enter conference URL (or 'quit' to exit): https://iscaconf.org/isca2026/submit/papers.php
+
+Conference acronym (e.g., ISCA): ISCA
+Year (e.g., 2026): 2026
+
+🤖 Extracting conference info from URL using AI...
+   URL: https://iscaconf.org/isca2026/submit/papers.php
+
+✅ AI extracted:
+   Conference: ISCA 2026
+   Paper Deadline: November 17, 2025
+   Submission Type: Regular Paper
+   Conference Dates: June 27-July 1, 2026
+   Location: Raleigh, NC
+   Abstract Deadline: November 10, 2025
+
+   Add this to database? (y/n): y
+
+✅ Added ISCA_2026 to database!
+
+📤 Syncing to website...
+✅ Synced to website!
+   View at: https://abdullahsahruri.github.io/conferences/
 ```
 
 ## Features
 
-- **100% FREE**: Uses local Ollama AI (no API costs)
-- **90% accuracy**: AI understands context and finds correct deadlines
-- **Smart validation**: Prevents duplicates, validates years
-- **Auto-sync**: One command updates everything
-- **No URLs needed**: Just add conference acronyms
+✅ **You provide URL** - No wrong conference matching!
+✅ **AI extracts deadline** - No manual typing!
+✅ **Duplicate detection** - Warns if conference already exists
+✅ **Auto-sync to website** - Updates in 1-2 minutes
+✅ **Confirmation before adding** - Review before saving
 
-## Documentation
+## Requirements
 
-- [SETUP_GUIDE.md](SETUP_GUIDE.md) - Detailed setup instructions
-- [CLAUDE.md](CLAUDE.md) - Developer documentation
+Start Ollama if needed:
+```bash
+ollama serve &
+```
 
 ## Files
 
-- `run_tracker_and_sync.sh` - **Main script** (run this!)
-- `conference_tracker.py` - Conference discovery and tracking
-- `ai_conference_extractor_ollama.py` - Ollama AI extraction
-- `conferences_to_track.txt` - Your conference list
-- `conference_database.json` - Generated deadline database
-
-Happy conference tracking! 🚀
+- `interactive_add.py` - Main tool (USE THIS!)
+- `manual_add_conference.py` - Fallback for manual entry
+- `sync_to_website.sh` - Sync to website
