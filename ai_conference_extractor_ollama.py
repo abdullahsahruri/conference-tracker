@@ -27,6 +27,13 @@ except ImportError:
     validate_extracted_info = None
     check_deadline_context = None
 
+# Import date normalizer
+try:
+    from date_normalizer import normalize_conference_dates
+except ImportError:
+    # Date normalizer not available, continue without normalization
+    normalize_conference_dates = None
+
 # Ollama API endpoint (runs locally)
 OLLAMA_API = "http://localhost:11434/api/generate"
 
@@ -177,6 +184,10 @@ Return ONLY the JSON object."""
                 else:
                     print(f"  ❌ Cannot auto-correct, skipping")
                     return None
+
+        # Normalize date formats to consistent format
+        if normalize_conference_dates:
+            info = normalize_conference_dates(info)
 
         # Validate we got at least a deadline
         if info.get('paper_deadline') and info['paper_deadline'] != 'TBD':
