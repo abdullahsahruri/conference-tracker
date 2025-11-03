@@ -91,7 +91,7 @@ def fetch_conference_website(url: str) -> Optional[str]:
 
 
 def extract_with_ollama(website_text: str, conference_name: str, url: str,
-                       model: str = "llama3.2", expected_year: int = None) -> Optional[Dict]:
+                       model: str = None, expected_year: int = None) -> Optional[Dict]:
     """
     Use Ollama to extract conference information.
 
@@ -99,12 +99,27 @@ def extract_with_ollama(website_text: str, conference_name: str, url: str,
         website_text: Website content
         conference_name: Conference name
         url: Conference URL
-        model: Ollama model to use (default: llama3.2)
+        model: Ollama model to use (auto-detects if None)
         expected_year: Expected conference year for validation
 
     Returns:
         Dictionary with extracted information or None
     """
+    # Auto-detect model if not specified
+    if model is None:
+        models = get_available_models()
+        if not models:
+            return None
+        # Prefer llama3.2, llama3.1, or use first available
+        if "llama3.2" in models:
+            model = "llama3.2"
+        elif "llama3.1:latest" in models:
+            model = "llama3.1:latest"
+        elif any("llama3.1" in m for m in models):
+            model = [m for m in models if "llama3.1" in m][0]
+        else:
+            model = models[0]
+
     # Extract expected year from conference name if not provided
     if expected_year is None:
         import re
@@ -241,14 +256,14 @@ Return ONLY the JSON object."""
 
 
 def extract_conference_info_with_ollama(url: str, conference_name: str,
-                                       model: str = "llama3.2") -> Optional[Dict]:
+                                       model: str = None) -> Optional[Dict]:
     """
     Use Ollama to extract conference information from website.
 
     Args:
         url: Conference website URL
         conference_name: Expected conference name (e.g., "ISCA 2026")
-        model: Ollama model to use
+        model: Ollama model to use (auto-detects if None)
 
     Returns:
         Dictionary with extracted information or None
@@ -258,6 +273,22 @@ def extract_conference_info_with_ollama(url: str, conference_name: str,
         print("  ⚠️  Ollama not running!")
         print("  ℹ️  Start Ollama: ollama serve")
         return None
+
+    # Auto-detect model if not specified
+    if model is None:
+        models = get_available_models()
+        if not models:
+            print("  ❌ No Ollama models installed!")
+            return None
+        # Prefer llama3.2, llama3.1, or use first available
+        if "llama3.2" in models:
+            model = "llama3.2"
+        elif "llama3.1:latest" in models:
+            model = "llama3.1:latest"
+        elif any("llama3.1" in m for m in models):
+            model = [m for m in models if "llama3.1" in m][0]
+        else:
+            model = models[0]
 
     print(f"  🤖 Using Ollama ({model}) to analyze {url[:60]}...")
 
@@ -283,7 +314,7 @@ def extract_conference_info_with_ollama(url: str, conference_name: str,
 
 
 def search_conference_with_ollama(conference_name: str, year: int,
-                                 model: str = "llama3.2") -> Optional[Dict]:
+                                 model: str = None) -> Optional[Dict]:
     """
     Search for a conference and extract info using Ollama.
 
