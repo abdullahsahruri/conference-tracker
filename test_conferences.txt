@@ -1,4 +1,0 @@
-# Test with problematic conferences
-ISCAS
-FPGA
-ICCD
