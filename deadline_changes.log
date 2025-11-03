@@ -36,3 +36,6 @@
 [2025-11-02 23:20:43] NEW: ATS_2026 discovered
 [2025-11-02 23:21:08] DEADLINE CHANGE: EUROSYS_2025: {'Spring deadline': 'May 21, 2024', 'Fall deadline': 'October 22, 2024'} → May 21, 2024
 [2025-11-02 23:21:19] NEW: HOST_2026 discovered
+[2025-11-03 01:25:25] NEW: VLSI_2025 discovered
+[2025-11-03 01:26:16] URL CHANGE: CICC_2025: https://www.ieee-cicc.org/ → https://www.ieee-cicc.org/2026-call-for-papers/
+[2025-11-03 01:28:33] NEW: SOSP_2026 discovered

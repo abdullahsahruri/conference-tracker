@@ -7,7 +7,7 @@
     "location": "Seoul, Korea",
     "name": "MICRO 2025",
     "url": "https://microarch.org/micro58/",
-    "last_checked": "2025-11-02T23:17:10.735830",
+    "last_checked": "2025-11-03T01:24:57.615976",
     "extracted_with_ai": true,
     "ai_model": "llama3.1:latest"
   },
@@ -44,24 +44,24 @@
   "CICC_2025": {
     "paper_deadline": "November 17, 2025",
     "submission_type": "Regular Paper",
-    "conference_date": "April 19 \u2013 22, 2026",
+    "conference_date": "April 19 \u2013 23, 2026",
     "abstract_deadline": null,
     "location": "Seattle, WA, USA",
     "name": "CICC 2025",
-    "url": "https://www.ieee-cicc.org/",
-    "last_checked": "2025-11-02T15:29:08.343048",
+    "url": "https://www.ieee-cicc.org/2026-call-for-papers/",
+    "last_checked": "2025-11-03T01:26:16.025207",
     "extracted_with_ai": true,
     "ai_model": "llama3.1:latest"
   },
   "FCCM_2026": {
     "paper_deadline": "January 17, 2026",
     "submission_type": "Full Paper Submission",
-    "conference_date": "May 13 \u2013 16, 2026, Atlanta, GA, USA",
+    "conference_date": "May 13-16, 2026",
     "abstract_deadline": "January 10, 2026",
     "location": "Atlanta, GA, USA",
     "name": "FCCM 2026",
     "url": "https://www.fccm.org/",
-    "last_checked": "2025-11-02T23:20:24.938147",
+    "last_checked": "2025-11-03T01:27:59.582685",
     "extracted_with_ai": true,
     "ai_model": "llama3.1:latest"
   },
@@ -98,6 +98,30 @@
     "name": "ISCA 2025",
     "url": "https://iscaconf.org/isca2025/",
     "last_checked": "2025-11-02T23:16:56.192415",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
+  },
+  "VLSI_2025": {
+    "paper_deadline": "Closed",
+    "submission_type": "Regular Paper",
+    "conference_date": "August 23 ~ 24, 2025",
+    "abstract_deadline": null,
+    "location": "Dubai, UAE",
+    "name": "VLSI 2025",
+    "url": "https://cst2025.org/vlsie/index",
+    "last_checked": "2025-11-03T01:25:25.574844",
+    "extracted_with_ai": true,
+    "ai_model": "llama3.1:latest"
+  },
+  "SOSP_2026": {
+    "paper_deadline": "April 01, 2026",
+    "submission_type": "Regular Paper",
+    "conference_date": null,
+    "abstract_deadline": "March 26, 2026",
+    "location": null,
+    "name": "SOSP 2026",
+    "url": "https://sigops.org/s/conferences/sosp/2026/cfp.html",
+    "last_checked": "2025-11-03T01:28:33.362238",
     "extracted_with_ai": true,
     "ai_model": "llama3.1:latest"
   }
