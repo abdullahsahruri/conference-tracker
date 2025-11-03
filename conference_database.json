@@ -1,1 +1,26 @@
-{}
+{
+  "ISCA_2026": {
+    "paper_deadline": "November 17 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "June 27-July 1 2026",
+    "abstract_deadline": "November 10 2025",
+    "location": "Raleigh NC",
+    "name": "ISCA 2026",
+    "url": "https://iscaconf.org/isca2026",
+    "last_checked": "2025-11-03T21:55:00.762677",
+    "extracted_with_ai": false,
+    "ai_model": "manual"
+  },
+  "MICRO_2026": {
+    "paper_deadline": "April 11 2026",
+    "submission_type": "Regular Paper",
+    "conference_date": null,
+    "abstract_deadline": null,
+    "location": "Seoul Korea",
+    "name": "MICRO 2026",
+    "url": "https://microarch.org/micro59",
+    "last_checked": "2025-11-03T21:55:00.762930",
+    "extracted_with_ai": false,
+    "ai_model": "manual"
+  }
+}
