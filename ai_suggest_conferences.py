@@ -46,35 +46,30 @@ def search_conferences(query):
         return None
 
 
-def ask_ollama_for_suggestions(existing_conferences):
+def ask_ollama_for_suggestions(existing_conferences, model='mistral'):
     """Use Ollama to suggest related conferences."""
 
-    prompt = f"""You are a computer architecture and VLSI conference expert.
+    prompt = f"""List 15 major computer architecture/VLSI conferences I'm NOT tracking yet.
+Currently tracking: {', '.join(existing_conferences)}
 
-I currently track these conferences: {', '.join(existing_conferences)}
-
-Please suggest 10-15 OTHER major computer architecture, VLSI, circuits, and hardware design conferences that I'm not tracking yet.
-
-For each conference, provide ONLY:
-- Conference acronym (e.g., "HPCA", "DAC")
-- Full name
-- Category (Architecture/VLSI/Design Automation/etc.)
-
-Output as JSON array:
+Return ONLY valid JSON array:
 [
   {{"acronym": "HPCA", "name": "High-Performance Computer Architecture", "category": "Architecture"}},
-  ...
+  {{"acronym": "DAC", "name": "Design Automation Conference", "category": "Design Automation"}},
+  {{"acronym": "ISSCC", "name": "International Solid-State Circuits Conference", "category": "VLSI"}}
 ]
 
-Only output the JSON, nothing else."""
+Categories: Architecture, VLSI, Design Automation, FPGA, Testing, Security, Systems, Power/Energy
+No explanation, ONLY the JSON array."""
 
     try:
+        print(f"   Using Ollama model: {model}")
         result = subprocess.run(
-            ['ollama', 'run', 'llama3.2'],
+            ['ollama', 'run', model],
             input=prompt,
             capture_output=True,
             text=True,
-            timeout=30
+            timeout=60
         )
 
         output = result.stdout.strip()
@@ -133,7 +128,7 @@ def search_web_for_conference_lists():
     return list(found_conferences)
 
 
-def generate_suggestions(existing_file='my_conferences.csv'):
+def generate_suggestions(existing_file='my_conferences.csv', model='mistral'):
     """Generate conference suggestions using AI."""
 
     existing = load_existing_conferences(existing_file)
@@ -145,7 +140,7 @@ def generate_suggestions(existing_file='my_conferences.csv'):
     print("\n🤖 Using AI to find related conferences...\n")
 
     # Try Ollama first
-    suggestions = ask_ollama_for_suggestions(existing)
+    suggestions = ask_ollama_for_suggestions(existing, model=model)
 
     if not suggestions:
         # Fallback: Use web search
@@ -213,5 +208,18 @@ def generate_suggestions(existing_file='my_conferences.csv'):
 
 
 if __name__ == "__main__":
-    input_file = sys.argv[1] if len(sys.argv) > 1 else 'my_conferences.csv'
-    generate_suggestions(input_file)
+    import argparse
+
+    parser = argparse.ArgumentParser(description='AI-powered conference suggestions')
+    parser.add_argument('csv_file', nargs='?', default='my_conferences.csv',
+                        help='CSV file with existing conferences')
+    parser.add_argument('--model', '-m', default='mistral',
+                        choices=['mistral', 'llama3.2', 'llama3.1', 'qwen2.5'],
+                        help='Ollama model to use (default: mistral)')
+
+    args = parser.parse_args()
+
+    print(f"📋 Input: {args.csv_file}")
+    print(f"🤖 Model: {args.model}\n")
+
+    generate_suggestions(args.csv_file, model=args.model)
