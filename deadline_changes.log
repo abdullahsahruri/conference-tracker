@@ -39,3 +39,63 @@
 [2025-11-03 01:25:25] NEW: VLSI_2025 discovered
 [2025-11-03 01:26:16] URL CHANGE: CICC_2025: https://www.ieee-cicc.org/ → https://www.ieee-cicc.org/2026-call-for-papers/
 [2025-11-03 01:28:33] NEW: SOSP_2026 discovered
+[2025-11-03 01:45:16] DEADLINE CHANGE: ISCA_2025: November 01, 2025 → November 22, 2024
+[2025-11-03 01:45:16] URL CHANGE: ISCA_2025: https://iscaconf.org/isca2025/ → https://iscaconf.org/isca2025/submit/papers.php
+[2025-11-03 01:45:23] NEW: ISCA_2026 discovered
+[2025-11-03 01:45:38] NEW: MICRO_2026 discovered
+[2025-11-03 01:45:50] NEW: HPCA_2026 discovered
+[2025-11-03 01:45:59] NEW: ASPLOS_2025 discovered
+[2025-11-03 01:46:05] NEW: ASPLOS_2026 discovered
+[2025-11-03 01:47:56] NEW: ISSCC_2026 discovered
+[2025-11-03 01:48:17] DEADLINE CHANGE: VLSI_2025: Closed → February 10th, 2025
+[2025-11-03 01:48:17] URL CHANGE: VLSI_2025: https://cst2025.org/vlsie/index → https://ieee-isvlsi.github.io/ISVLSI_2025_Website/call-for-papers.html
+[2025-11-03 01:48:21] NEW: VLSI_2026 discovered
+[2025-11-03 01:48:36] NEW: ICCAD_2025 discovered
+[2025-11-03 01:48:46] DEADLINE CHANGE: ICCAD_2026: January 31, 2026 → January 15, 2026
+[2025-11-03 01:48:46] URL CHANGE: ICCAD_2026: https://www.iccad-conf.com/ → https://ieee-icad.org/icad-call-for-papers/
+[2025-11-03 01:48:53] NEW: DAC_2025 discovered
+[2025-11-03 01:49:05] NEW: DAC_2026 discovered
+[2025-11-03 01:50:03] NEW: DATE_2025 discovered
+[2025-11-03 01:50:10] NEW: DATE_2026 discovered
+[2025-11-03 01:50:21] NEW: ASPDAC_2025 discovered
+[2025-11-03 01:50:32] NEW: ASPDAC_2026 discovered
+[2025-11-03 01:50:47] DEADLINE CHANGE: ISLPED_2025: March 20, 2025 → March 15, 2024
+[2025-11-03 01:50:47] URL CHANGE: ISLPED_2025: https://www.islped.org/2025/ → https://www.islped.org/2025/files/ISPED2025CfP.pdf
+[2025-11-03 01:50:57] NEW: ISLPED_2026 discovered
+[2025-11-03 01:51:04] DEADLINE CHANGE: GLSVLSI_2025: March 17, 2025 → 15th May 2025
+[2025-11-03 01:51:04] URL CHANGE: GLSVLSI_2025: https://glsvlsi.org/ → https://www.glsvlsi.org/camera-ready.html
+[2025-11-03 01:51:18] NEW: GLSVLSI_2026 discovered
+[2025-11-03 01:51:27] DEADLINE CHANGE: CICC_2025: November 17, 2025 → November 11, 2024
+[2025-11-03 01:51:27] URL CHANGE: CICC_2025: https://www.ieee-cicc.org/2026-call-for-papers/ → https://www.ieee-cicc.org/2025archive/2025-call-for-papers/
+[2025-11-03 01:51:39] NEW: CICC_2026 discovered
+[2025-11-03 01:51:58] NEW: ESSCIRC_2026 discovered
+[2025-11-03 01:52:12] NEW: ISQED_2025 discovered
+[2025-11-03 01:52:24] NEW: ISQED_2026 discovered
+[2025-11-03 01:52:30] NEW: VLSI-SOC_2025 discovered
+[2025-11-03 01:52:53] NEW: VLSI-SOC_2026 discovered
+[2025-11-03 01:53:04] NEW: ISCAS_2025 discovered
+[2025-11-03 01:53:17] NEW: ISCAS_2026 discovered
+[2025-11-03 01:53:26] NEW: ICCD_2025 discovered
+[2025-11-03 01:53:36] NEW: ICCD_2026 discovered
+[2025-11-03 01:53:42] NEW: ISPD_2025 discovered
+[2025-11-03 01:53:50] NEW: ISPD_2026 discovered
+[2025-11-03 01:53:58] NEW: FPGA_2025 discovered
+[2025-11-03 01:54:10] NEW: FPGA_2026 discovered
+[2025-11-03 01:54:19] NEW: FCCM_2025 discovered
+[2025-11-03 01:54:27] URL CHANGE: FCCM_2026: https://www.fccm.org/ → https://www.fccm.org/call-for-papers-2026/
+[2025-11-03 01:54:37] NEW: ITC_2025 discovered
+[2025-11-03 01:54:47] NEW: ITC_2026 discovered
+[2025-11-03 01:54:55] NEW: VTS_2025 discovered
+[2025-11-03 01:55:03] NEW: VTS_2026 discovered
+[2025-11-03 01:55:12] NEW: ATS_2026 discovered
+[2025-11-03 01:55:21] DEADLINE CHANGE: SOSP_2025: April 17, 2025; 23:59 PT → April 17, 2025
+[2025-11-03 01:55:21] URL CHANGE: SOSP_2025: https://sigops.org/s/conferences/sosp/2025/index.html → https://sigops.org/s/conferences/sosp/2025/cfp.html
+[2025-11-03 01:55:34] NEW: OSDI_2025 discovered
+[2025-11-03 01:55:42] NEW: OSDI_2026 discovered
+[2025-11-03 01:55:51] NEW: EUROSYS_2025 discovered
+[2025-11-03 01:56:00] NEW: EUROSYS_2026 discovered
+[2025-11-03 01:56:10] NEW: HOST_2025 discovered
+[2025-11-03 01:56:17] NEW: HOST_2026 discovered
+[2025-11-03 01:56:42] NEW: CHES_2026 discovered
+[2025-11-03 01:56:53] NEW: HOTCHIPS_2025 discovered
+[2025-11-03 01:57:02] NEW: HOTCHIPS_2026 discovered
