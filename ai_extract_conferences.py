@@ -37,6 +37,13 @@ def search_conference_website(conference_name, year):
                 # Decode URL
                 import urllib.parse
                 result_url = urllib.parse.unquote(encoded_url)
+
+                # Clean URL - remove tracking parameters
+                if '&amp;rut=' in result_url:
+                    result_url = result_url.split('&amp;rut=')[0]
+                if '&rut=' in result_url:
+                    result_url = result_url.split('&rut=')[0]
+
                 if result_url.startswith('http'):
                     return result_url
 
