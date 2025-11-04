@@ -30,12 +30,12 @@ Done! Website updates in 1-2 minutes.
 ## All Commands
 
 ```bash
-./csv template                    # Create empty CSV template
-./csv export                      # Export current database to CSV
-./csv import <file>               # Import CSV and push to website
-./clear                           # Clear all conferences
-python3 ai_suggest_conferences.py # AI-powered conference suggestions
-python3 suggest_conferences.py    # Curated conference list
+./csv template                      # Create empty CSV template
+./csv export                        # Export current database to CSV
+./csv import <file>                 # Import CSV and push to website
+./clear                             # Clear all conferences
+python3 ai_extract_conferences.py   # AI extracts real deadlines from web
+python3 suggest_conferences.py      # Static curated list (TBD deadlines)
 ```
 
 ## Workflow
@@ -56,21 +56,32 @@ python3 suggest_conferences.py    # Curated conference list
 
 ### Get Conference Suggestions
 
-**Curated List (Recommended - Fast & Reliable):**
+**AI Deadline Extraction (Recommended - Extracts Real Data):**
+```bash
+# Pull Qwen model first (one-time, 4.7GB)
+ollama pull qwen2.5
+
+# Extract deadlines for specific conferences
+python3 ai_extract_conferences.py --conferences "HPCA,ASPLOS,DAC,ISSCC"
+
+# Or use defaults (HPCA,ASPLOS,DAC,ISSCC,VLSI)
+python3 ai_extract_conferences.py
+```
+
+**This actually:**
+- Searches the web for each conference
+- Fetches the conference website
+- Uses AI to extract paper deadlines, abstract deadlines, dates, location
+- Returns populated CSV with REAL data
+
+**Curated List (Fast but Static):**
 ```bash
 python3 suggest_conferences.py
 ```
 
-Instantly shows 50+ conferences from a curated database. No AI needed.
+Shows 50+ conferences from a hardcoded list with TBD deadlines. You fill in deadlines manually.
 
-**AI-Powered (Optional - Requires Ollama):**
-```bash
-python3 ai_suggest_conferences.py
-```
-
-Uses Ollama AI (requires fast hardware). Falls back to curated list if AI unavailable or slow.
-
-Both output CSV format - just copy the rows you want and paste into `my_conferences.csv`.
+All tools output CSV format - copy the rows and paste into `my_conferences.csv`.
 
 Categories include:
 - Computer Architecture (ISCA, MICRO, HPCA, ASPLOS, etc.)
