@@ -30,12 +30,13 @@ Done! Website updates in 1-2 minutes.
 ## All Commands
 
 ```bash
-./csv template                      # Create empty CSV template
-./csv export                        # Export current database to CSV
-./csv import <file>                 # Import CSV and push to website
-./clear                             # Clear all conferences
-python3 ai_extract_conferences.py   # AI extracts real deadlines from web
-python3 suggest_conferences.py      # Static curated list (TBD deadlines)
+./csv template                           # Create empty CSV template
+./csv export                             # Export current database to CSV
+./csv import <file>                      # Import CSV and push to website
+./clear                                  # Clear all conferences
+python3 ai_extract_all_conferences.py    # AI extracts ALL 50+ conferences (comprehensive)
+python3 ai_extract_conferences.py        # AI extracts specific conferences (custom)
+python3 suggest_conferences.py           # Static curated list (TBD deadlines)
 ```
 
 ## Workflow
@@ -56,11 +57,47 @@ python3 suggest_conferences.py      # Static curated list (TBD deadlines)
 
 ### Get Conference Suggestions
 
-**AI Deadline Extraction (Recommended - Extracts Real Data):**
+**Comprehensive AI Extraction - ALL Conferences (Best for Bulk Extraction):**
 ```bash
 # Pull Qwen model first (one-time, 4.7GB)
 ollama pull qwen2.5
 
+# Extract ALL 50+ conferences (Architecture, VLSI, Design Automation, FPGA, Testing, etc.)
+python3 ai_extract_all_conferences.py
+
+# Extract only Architecture conferences
+python3 ai_extract_all_conferences.py --category Architecture
+
+# Extract only VLSI/Circuits conferences
+python3 ai_extract_all_conferences.py --category "VLSI/Circuits"
+
+# Extract for specific year
+python3 ai_extract_all_conferences.py --year 2025
+
+# List all available categories
+python3 ai_extract_all_conferences.py --list-categories
+
+# List all 50+ conferences
+python3 ai_extract_all_conferences.py --list-conferences
+```
+
+**Covers 50+ conferences across all categories:**
+- Computer Architecture (ISCA, MICRO, HPCA, ASPLOS, ICCD, ICS, PACT, CGO)
+- VLSI & Circuits (ISSCC, VLSI, CICC, ESSCIRC, GLSVLSI, ISCAS, A-SSCC, RFIC)
+- Design Automation (DAC, ICCAD, DATE, ASPDAC, ISPD, CODES+ISSS, ISQED)
+- FPGA (FPGA, FCCM, FPL, FPT)
+- Testing & Verification (ITC, VTS, ATS, ETS)
+- Systems (SOSP, OSDI, EUROSYS, ATC, FAST, NSDI)
+- Hardware Security (HOST, CHES)
+- Power/Energy (ISLPED, PATMOS)
+- Memory/Storage (MEMSYS, IMW)
+- AI/ML Hardware (MLSys, MLCAD)
+- Embedded Systems (EMSOFT, RTAS, RTSS, CASES)
+- Performance (ISPASS, IISWC)
+- Emerging Technologies (HOTCHIPS, HOTOS)
+
+**AI Deadline Extraction - Custom Selection (Recommended for Specific Conferences):**
+```bash
 # Extract deadlines for specific conferences
 python3 ai_extract_conferences.py --conferences "HPCA,ASPLOS,DAC,ISSCC"
 
@@ -68,26 +105,20 @@ python3 ai_extract_conferences.py --conferences "HPCA,ASPLOS,DAC,ISSCC"
 python3 ai_extract_conferences.py
 ```
 
-**This actually:**
+**How AI extraction works:**
 - Searches the web for each conference
 - Fetches the conference website
 - Uses AI to extract paper deadlines, abstract deadlines, dates, location
 - Returns populated CSV with REAL data
 
-**Curated List (Fast but Static):**
+**Curated List (Fast but Static - Manual Deadline Entry Required):**
 ```bash
 python3 suggest_conferences.py
 ```
 
-Shows 50+ conferences from a hardcoded list with TBD deadlines. You fill in deadlines manually.
+Shows 30+ conferences from a hardcoded list with TBD deadlines. You fill in deadlines manually.
 
 All tools output CSV format - copy the rows and paste into `my_conferences.csv`.
-
-Categories include:
-- Computer Architecture (ISCA, MICRO, HPCA, ASPLOS, etc.)
-- VLSI & Circuits (ISSCC, VLSI, CICC, ESSCIRC, etc.)
-- Design Automation (DAC, ICCAD, DATE, ASPDAC, etc.)
-- FPGA, Testing, Security, Systems, and more
 
 ### Manual Entry (Alternative)
 
