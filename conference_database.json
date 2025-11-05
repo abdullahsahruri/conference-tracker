@@ -1,50 +1,62 @@
 {
-    "ISCA_2026": {
-        "paper_deadline": "November 17 2025",
-        "submission_type": "Regular Paper",
-        "conference_date": "June 27 2026",
-        "abstract_deadline": "November 10 2025",
-        "location": "Raleigh NC",
-        "name": "ISCA 2026",
-        "url": "https://iscaconf.org/isca2026",
-        "last_checked": "2025-11-05T04:18:41.642287",
-        "extracted_with_ai": false,
-        "ai_model": "manual"
-    },
-    "DAC_2026": {
-        "paper_deadline": "November 11 2025",
-        "submission_type": "Regular Paper",
-        "conference_date": "June 26 2026",
-        "abstract_deadline": null,
-        "location": "San Francisco CA",
-        "name": "DAC 2026",
-        "url": "https://softconf.com/dac26/research/",
-        "last_checked": "2025-11-05T04:18:41.642491",
-        "extracted_with_ai": false,
-        "ai_model": "manual"
-    },
-    "ISQED_2026": {
-        "paper_deadline": "November 17 2025",
-        "submission_type": "Regular Paper",
-        "conference_date": "March 3 2026",
-        "abstract_deadline": null,
-        "location": "Virtual",
-        "name": "ISQED 2026",
-        "url": "https://www.isqed.org/",
-        "last_checked": "2025-11-05T04:18:41.642817",
-        "extracted_with_ai": false,
-        "ai_model": "manual"
-    },
-    "VTS_2026": {
-        "paper_deadline": "November 17 2025",
-        "submission_type": "Regular Paper",
-        "conference_date": "April 27 2026",
-        "abstract_deadline": null,
-        "location": "Napa CA USA",
-        "name": "VTS 2026",
-        "url": "https://tttc-vts.org/public_html/new/2026/",
-        "last_checked": "2025-11-05T04:18:41.643085",
-        "extracted_with_ai": false,
-        "ai_model": "manual"
-    }
+  "ISCA_2026": {
+    "paper_deadline": "November 17 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "June 27 2026",
+    "abstract_deadline": "November 10 2025",
+    "location": "Raleigh NC",
+    "name": "ISCA 2026",
+    "url": "https://iscaconf.org/isca2026",
+    "last_checked": "2025-11-04T23:56:42.110071",
+    "extracted_with_ai": false,
+    "ai_model": "manual"
+  },
+  "DAC_2026": {
+    "paper_deadline": "November 11 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "June 26 2026",
+    "abstract_deadline": null,
+    "location": "San Francisco CA",
+    "name": "DAC 2026",
+    "url": "https://softconf.com/dac26/research/",
+    "last_checked": "2025-11-04T23:56:42.110901",
+    "extracted_with_ai": false,
+    "ai_model": "manual"
+  },
+  "ISQED_2026": {
+    "paper_deadline": "November 17 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "March 3 2026",
+    "abstract_deadline": null,
+    "location": "Virtual",
+    "name": "ISQED 2026",
+    "url": "https://www.isqed.org/",
+    "last_checked": "2025-11-04T23:56:42.111388",
+    "extracted_with_ai": false,
+    "ai_model": "manual"
+  },
+  "VTS_2026": {
+    "paper_deadline": "November 17 2025",
+    "submission_type": "Regular Paper",
+    "conference_date": "April 27 2026",
+    "abstract_deadline": null,
+    "location": "Napa CA USA",
+    "name": "VTS 2026",
+    "url": "https://tttc-vts.org/public_html/new/2026/",
+    "last_checked": "2025-11-04T23:56:42.111769",
+    "extracted_with_ai": false,
+    "ai_model": "manual"
+  },
+  "ARITH_2026": {
+    "paper_deadline": "January 23 2026",
+    "submission_type": "Abstract",
+    "conference_date": "June 28 2026",
+    "abstract_deadline": null,
+    "location": "Fulda Germany",
+    "name": "ARITH 2026",
+    "url": "https://arith-conference.org/2026/",
+    "last_checked": "2025-11-04T23:56:42.112851",
+    "extracted_with_ai": false,
+    "ai_model": "manual"
+  }
 }
