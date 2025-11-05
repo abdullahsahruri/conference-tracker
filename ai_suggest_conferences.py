@@ -221,7 +221,7 @@ if __name__ == "__main__":
     parser.add_argument('csv_file', nargs='?', default='my_conferences.csv',
                         help='CSV file with existing conferences')
     parser.add_argument('--model', '-m', default='mistral',
-                        choices=['mistral', 'llama3.2', 'llama3.1', 'qwen2.5'],
+                        choices=['mistral', 'llama3.2', 'llama3.1', 'qwen2.5', 'qwen3:4b', 'qwen3:8b', 'qwen3:14b'],
                         help='Ollama model to use (default: mistral)')
 
     args = parser.parse_args()
