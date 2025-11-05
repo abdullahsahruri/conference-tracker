@@ -7,7 +7,7 @@
     "location": "Raleigh NC",
     "name": "ISCA 2026",
     "url": "https://iscaconf.org/isca2026",
-    "last_checked": "2025-11-04T23:56:42.110071",
+    "last_checked": "2025-11-05T00:00:36.239948",
     "extracted_with_ai": false,
     "ai_model": "manual"
   },
@@ -19,7 +19,7 @@
     "location": "San Francisco CA",
     "name": "DAC 2026",
     "url": "https://softconf.com/dac26/research/",
-    "last_checked": "2025-11-04T23:56:42.110901",
+    "last_checked": "2025-11-05T00:00:36.241005",
     "extracted_with_ai": false,
     "ai_model": "manual"
   },
@@ -31,7 +31,7 @@
     "location": "Virtual",
     "name": "ISQED 2026",
     "url": "https://www.isqed.org/",
-    "last_checked": "2025-11-04T23:56:42.111388",
+    "last_checked": "2025-11-05T00:00:36.241683",
     "extracted_with_ai": false,
     "ai_model": "manual"
   },
@@ -43,7 +43,7 @@
     "location": "Napa CA USA",
     "name": "VTS 2026",
     "url": "https://tttc-vts.org/public_html/new/2026/",
-    "last_checked": "2025-11-04T23:56:42.111769",
+    "last_checked": "2025-11-05T00:00:36.242113",
     "extracted_with_ai": false,
     "ai_model": "manual"
   },
@@ -55,7 +55,7 @@
     "location": "Fulda Germany",
     "name": "ARITH 2026",
     "url": "https://arith-conference.org/2026/",
-    "last_checked": "2025-11-04T23:56:42.112851",
+    "last_checked": "2025-11-05T00:00:36.242601",
     "extracted_with_ai": false,
     "ai_model": "manual"
   }
