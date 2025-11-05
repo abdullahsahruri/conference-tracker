@@ -1,10 +1,11 @@
-name: Import Conferences from CSV
+name: Sync Conferences CSV to Website
 
-# Trigger when CSV files are edited on GitHub
+# Trigger when my_conferences.csv is changed
 on:
   push:
     paths:
-      - '**.csv'
+      - 'my_conferences.csv'
+      - 'manual_conferences.csv'
 
   # Allow manual triggering
   workflow_dispatch:
@@ -25,15 +26,20 @@ jobs:
         with:
           python-version: '3.11'
 
-      - name: Find and import CSV files
+      - name: Import my_conferences.csv
         run: |
-          # Import any CSV file that contains conference data
-          for csv_file in *.csv; do
-            if [ -f "$csv_file" ] && [ "$csv_file" != "manual_conferences_template.csv" ]; then
-              echo "Importing $csv_file..."
-              python3 import_manual_conferences.py "$csv_file"
-            fi
-          done
+          echo "📥 Syncing CSV to database..."
+
+          if [ -f "my_conferences.csv" ]; then
+            python3 import_manual_conferences.py my_conferences.csv
+          elif [ -f "manual_conferences.csv" ]; then
+            python3 import_manual_conferences.py manual_conferences.csv
+          else
+            echo "❌ No CSV file found"
+            exit 1
+          fi
+
+          echo "✅ Database synced successfully"
 
       - name: Commit updated database
         run: |
@@ -52,7 +58,18 @@ jobs:
           branch: ${{ github.ref }}
 
       - name: Sync to website repository
+        env:
+          SITE_TOKEN: ${{ secrets.SITE_GITHUB_TOKEN }}
         run: |
+          echo "🌐 Syncing to website repository..."
+
+          # Verify token exists
+          if [ -z "$SITE_TOKEN" ]; then
+            echo "❌ Error: SITE_GITHUB_TOKEN secret not configured"
+            echo "Please add a Personal Access Token as a secret named SITE_GITHUB_TOKEN"
+            exit 1
+          fi
+
           # Clone website repo
           git clone https://github.com/abdullahsahruri/abdullahsahruri.github.io.git site
 
@@ -64,5 +81,11 @@ jobs:
           git config user.name "Conference Bot"
           git config user.email "action@github.com"
           git add assets/conference_database.json
-          git diff --quiet && git diff --staged --quiet || git commit -m "Update conferences from CSV - $(date +'%Y-%m-%d %H:%M UTC')"
-          git push https://${{ secrets.SITE_GITHUB_TOKEN }}@github.com/abdullahsahruri/abdullahsahruri.github.io.git master
+
+          if git diff --quiet && git diff --staged --quiet; then
+            echo "ℹ️  No changes to sync"
+          else
+            git commit -m "🤖 Auto-update conferences from CSV - $(date +'%Y-%m-%d %H:%M UTC')"
+            git push https://$SITE_TOKEN@github.com/abdullahsahruri/abdullahsahruri.github.io.git master
+            echo "✅ Website updated successfully!"
+          fi
