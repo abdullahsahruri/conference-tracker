@@ -7,7 +7,7 @@
     "location": "Raleigh NC",
     "name": "ISCA 2026",
     "url": "https://iscaconf.org/isca2026",
-    "last_checked": "2025-11-04T22:02:44.313769",
+    "last_checked": "2025-11-05T04:13:00.056254",
     "extracted_with_ai": false,
     "ai_model": "manual"
   },
@@ -19,7 +19,7 @@
     "location": "San Francisco CA",
     "name": "DAC 2026",
     "url": "https://softconf.com/dac26/research/",
-    "last_checked": "2025-11-04T22:02:44.313997",
+    "last_checked": "2025-11-05T04:13:00.056505",
     "extracted_with_ai": false,
     "ai_model": "manual"
   },
@@ -28,10 +28,10 @@
     "submission_type": "Regular Paper",
     "conference_date": "March 3-5 2026",
     "abstract_deadline": null,
-    "location": "Virtual",
+    "location": "Virtual# Last updated: Tue Nov  4 22:12:48 CST 2025",
     "name": "ISQED 2026",
     "url": "https://www.isqed.org/",
-    "last_checked": "2025-11-04T22:02:44.315074",
+    "last_checked": "2025-11-05T04:13:00.057032",
     "extracted_with_ai": false,
     "ai_model": "manual"
   }
